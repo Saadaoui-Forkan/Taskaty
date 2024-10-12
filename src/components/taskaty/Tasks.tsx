@@ -11,47 +11,54 @@ const Tasks = () => {
   ];
   return (
     <div className="">
-      <FilterBtn/>
+      <FilterBtn />
       <div className="mx-auto mt-14">
-        <div className="table w-10/12 md:w-4/5 mx-auto text-md md:text-lg bg-transparent">
-          <div className="table-row bg-royalPurple text-white font-semibold">
-            <div className="table-cell w-1/2 text-center p-1 border-r">
-              <p>Taskaty</p>
-            </div>
-            <div className="table-cell w-1/3 text-center border-r p-1">
-              <p>Status</p>
-            </div>
-            <div className="table-cell w-1/6 text-center p-1">
-              <p>Details</p>
+        <div className="w-10/12 md:w-4/5 mx-auto text-md md:text-lg">
+          {/* Header du tableau */}
+          <div className="table w-full bg-royalPurple text-white font-semibold rounded-t-lg">
+            <div className="table-row">
+              <div className="table-cell w-1/2 text-center p-3 border-r border-gray-300">
+                <p>Taskaty</p>
+              </div>
+              <div className="table-cell w-1/3 text-center p-3 border-r border-gray-300">
+                <p>Status</p>
+              </div>
+              <div className="table-cell w-1/6 text-center p-3">
+                <p>Details</p>
+              </div>
             </div>
           </div>
 
+          {/* Espacement entre le header et les lignes */}
           <div className="my-2"></div>
 
+          {/* Lignes du tableau */}
           {tasks.map((task) => (
             <div
-              className="table-row bg-transparent text-gray-500 shadow-md my-2 mt-2"
+              className="table w-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-md mb-2 rounded-lg"
               key={task.id}
             >
-              <div className="table-cell w-1/2 text-left p-3 border-r">
+              <div className="table-cell w-1/2 text-left p-3 border-r border-gray-300">
                 <p>{task.title}</p>
               </div>
+
               <div
-                className={`table-cell w-1/3 text-center font-bold p-3 border-r 
-                ${
-                  task.status === "Completed"
-                    ? "text-leafGreen"
-                    : task.status === "In Progress"
-                    ? "text-goldenYellow"
-                    : "text-coralRed"
-                }`}
+                className={`table-cell w-1/3 text-center font-bold p-3 border-r border-gray-300 
+              ${
+                task.status === "Completed"
+                  ? "text-leafGreen"
+                  : task.status === "In Progress"
+                  ? "text-goldenYellow"
+                  : "text-coralRed"
+              }`}
               >
                 <p>{task.status}</p>
               </div>
-              <div className="table-cell w-1/6 p-3 hover:text-leafGreen">
+
+              <div className="table-cell w-1/6 text-center p-3 hover:text-leafGreen">
                 <Link
-                  className="flex justify-center items-center"
                   href={`/taskaties/${task.id}`}
+                  className="flex justify-center items-center"
                 >
                   <FiEye />
                 </Link>

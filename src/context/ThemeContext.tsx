@@ -1,22 +1,3 @@
-## Custom  dark/light mode
-__tailwind.config.ts__
-```
-const config: Config = {
-  --------
-  plugins: [],
-  darkMode: "class",
-};
-```
-
-__globals.css__: animation when the mode change
-```
-* {
-  @apply transition-colors duration-300
-}
-```
-
-__src/context/ThemeContext.ts__
-```
 "use client"
 
 import { createContext, useState } from "react"
@@ -43,23 +24,3 @@ export const ThemeProvider = ({ children }: Readonly<{
         </ThemeContext.Provider>
     )
 }
-```
-
-__layout.tsx__
-```
-<html lang="en">
-    <body className={ubuntu.className}>
-    <ThemeProvider>
-        -----
-    </ThemeProvider>
-    </body>
-</html>
-```
-
-__import darkMode & toggleMode__
-```
-const {darkMode, toggleMode} = useContext(ThemeContext)
-
-{/* Settings Button */}
-onClick={toggleDropdown}
-```

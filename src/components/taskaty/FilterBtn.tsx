@@ -16,67 +16,80 @@ const FilterSidebar = () => {
 
   return (
     <div className="z-50">
-        <div
-            className={`w-64 p-4 border-r bg-coolGray h-screen fixed top-16 left-0 transform transition-transform duration-300 ${
-            isOpen ? "translate-x-0" : "-translate-x-full"
+      {/* Sidebar */}
+      <div
+        className={`w-64 p-4 border-r bg-coolGray h-screen fixed top-16 left-0 transform 
+            transition-transform duration-300 shadow-lg ${
+              isOpen ? "translate-x-0" : "-translate-x-full"
             }`}
+      >
+        {/* Close Button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-4 right-4 text-rubyRed hover:text-coralRed transition-all"
         >
-            <button
-            onClick={handleClose}
-            className="absolute top-4 right-4 text-rubyRed hover:text-coralRed transition"
-            >
-            <IoIosCloseCircle className="text-4xl" />
-            </button>
+          <IoIosCloseCircle className="text-4xl" />
+        </button>
 
-            <h1 className="text-lg font-bold mb-4">Filters</h1>
+        {/* Filters Title */}
+        <h1 className="text-lg font-bold mb-4 text-white">Filters</h1>
 
-            <div className="mb-4">
-            <h2 className="font-semibold">Status</h2>
-            <div className="flex items-center mb-2">
-                <input type="checkbox" id="completed" />
-                <label htmlFor="completed" className="ml-2">
-                Completed
-                </label>
+        {/* Status Filter */}
+        <div className="mb-4">
+          <h2 className="font-semibold text-dustyGray">Status</h2>
+          {["Completed", "In Progress", "Not Started"].map((status, idx) => (
+            <div className="flex items-center mb-2" key={idx}>
+              <input
+                type="checkbox"
+                id={status.toLowerCase().replace(" ", "-")}
+                className="accent-leafGreen"
+              />
+              <label
+                htmlFor={status.toLowerCase().replace(" ", "-")}
+                className="ml-2 text-white"
+              >
+                {status}
+              </label>
             </div>
-            <div className="flex items-center mb-2">
-                <input type="checkbox" id="in-progress" />
-                <label htmlFor="in-progress" className="ml-2">In Progress</label>
-            </div>
-            <div className="flex items-center mb-2">
-                <input type="checkbox" id="not-started" />
-                <label htmlFor="not-started" className="ml-2">Not Started</label>
-            </div>
-            </div>
-
-            <div className="mb-4">
-            <h2 className="font-semibold">Date Range</h2>
-            <div className="mb-2">
-                <label htmlFor="start-date" className="block">From:</label>
-                <input
-                type="date"
-                id="start-date"
-                className="w-full p-2 border border-gray-300 rounded"
-                />
-            </div>
-            <div>
-                <label htmlFor="end-date" className="block">To:</label>
-                <input
-                type="date"
-                id="end-date"
-                className="w-full p-2 border border-gray-300 rounded"
-                />
-            </div>
-            </div>
+          ))}
         </div>
 
-        {!isOpen && (
-            <button
-            onClick={handleOpen}
-            className="fixed top-16 left-4 p-3 bg-royalPurple text-white rounded-full shadow-lg hover:bg-leafGreen transition"
-            >
-            <FiFilter/>
-            </button>
-        )}
+        {/* Date Range Filter */}
+        <div className="mb-4">
+          <h2 className="font-semibold text-dustyGray">Date Range</h2>
+          <div className="mb-2">
+            <label htmlFor="start-date" className="block text-white">
+              From:
+            </label>
+            <input
+              type="date"
+              id="start-date"
+              className="w-full p-2 border border-gray-300 rounded bg-white text-gray-800 focus:outline-none focus:ring focus:ring-leafGreen"
+            />
+          </div>
+          <div>
+            <label htmlFor="end-date" className="block text-white">
+              To:
+            </label>
+            <input
+              type="date"
+              id="end-date"
+              className="w-full p-2 border border-gray-300 rounded bg-white text-gray-800 focus:outline-none focus:ring focus:ring-leafGreen"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Open Sidebar Button */}
+      {!isOpen && (
+        <button
+          onClick={handleOpen}
+          className="fixed top-16 left-4 p-3 bg-royalPurple text-white rounded-full shadow-lg 
+             hover:bg-leafGreen transition-all duration-300"
+        >
+          <FiFilter className="text-2xl" />
+        </button>
+      )}
     </div>
   );
 };
