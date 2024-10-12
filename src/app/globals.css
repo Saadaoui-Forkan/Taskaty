@@ -1,11 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
-
-.logo {
-    font-family: "Protest Strike", sans-serif;
+* {
+  @apply transition-colors duration-300
 }
 
 .line-loader {

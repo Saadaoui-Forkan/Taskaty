@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Tajawal  } from 'next/font/google';
+import Fixed from "@/components/fixed";
 
 const ubuntu = Tajawal ({
   subsets: ['arabic'],
@@ -31,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={ubuntu.className}>
+        <Fixed/>
         {children}
       </body>
     </html>

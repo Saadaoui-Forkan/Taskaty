@@ -23,9 +23,17 @@ const config: Config = {
         white: "#fff",
         royalPurple: "#573d7d",
         leafGreen: "#28a745",
+        goldenYellow: "#ffcc00",
+      },
+      fontFamily: {
+        protest: ['"Protest Strike"', 'sans-serif'],
+      },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite', 
       },
     },
   },
   plugins: [],
+  darkMode: "class"
 };
 export default config;
