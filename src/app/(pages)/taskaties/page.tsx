@@ -4,7 +4,7 @@ import React from "react";
 
 const Taskaty = () => {
   return (
-    <div className="">
+    <div className="dark:bg-dustyGray">
       <Navbar />
       <Tasks/>
     </div>

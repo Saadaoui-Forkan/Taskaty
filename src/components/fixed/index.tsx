@@ -10,8 +10,6 @@ const Fixed = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [language, setLanguage] = useState("English");
 
-  console.log(darkMode);
-
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
