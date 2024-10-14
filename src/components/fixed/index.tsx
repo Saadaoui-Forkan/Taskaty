@@ -1,28 +1,35 @@
 "use client";
+
+import { ChangeEvent, useContext, useState, useTransition } from 'react';
 import { ThemeContext } from "@/context/ThemeContext";
-import React, { useContext, useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import { CiSettings } from "react-icons/ci";
 import { FiMoon, FiSun } from "react-icons/fi";
 
 const Fixed = () => {
+  const t = useTranslations("Fixed");
   const { darkMode, toggleMode } = useContext(ThemeContext);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [language, setLanguage] = useState("English");
+  const [isPending, startTransition] = useTransition();
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
+  const router = useRouter();
+  const localActive = useLocale();
 
-  const changeLanguage = (lang: any) => {
-    setLanguage(lang);
-    setDropdownOpen(false);
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const nextLocale = e.target.value;
+
+    startTransition(() => {
+      router.replace(`/${nextLocale}`);
+    });
   };
 
   return (
     <div className="fixed bottom-4 right-4 z-50">
       <div className="relative">
-        {/* Settings Button */}
         <div
           onClick={toggleDropdown}
           className="flex items-center justify-center p-3 bg-coolGray dark:bg-gray-800 
@@ -32,7 +39,6 @@ const Fixed = () => {
           <CiSettings className="text-2xl" />
         </div>
 
-        {/* Dropdown */}
         {dropdownOpen && (
           <div
             onMouseEnter={() => setDropdownOpen(true)}
@@ -41,38 +47,33 @@ const Fixed = () => {
                    border border-coolGray dark:border-gray-600 rounded-lg shadow-lg 
                    py-2 transition-all duration-300"
           >
-            {/* Language Selection */}
             <div className="px-4 py-2 text-dustyGray dark:text-white">
               <label className="font-bold" htmlFor="language-select">
-                Select Language:
+                {t("select")}:
               </label>
               <select
                 id="language-select"
-                value={language}
-                onChange={(e) => changeLanguage(e.target.value)}
+                defaultValue={localActive}
+                onChange={onSelectChange}
+                disabled={isPending}
                 className="mt-1 block w-full border border-coolGray dark:border-gray-600 
                        bg-white dark:bg-slateGray text-slateGray dark:text-white 
                        rounded-lg focus:outline-none focus:ring focus:ring-leafGreen"
               >
-                <option value="Français">Français</option>
-                <option value="Arabe">العربية</option>
-                <option value="English">English</option>
+                <option value="en">English</option>
+                <option value="fr">Français</option>
+                <option value="ar">العربية</option>
               </select>
             </div>
 
-            {/* Dark/Light Mode Toggle */}
             <div
               onClick={toggleMode}
               className="flex items-center justify-between px-4 py-2 text-dustyGray 
                      dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 
                      cursor-pointer transition-all duration-300"
             >
-              <span>{darkMode ? "Light Mode" : "Dark Mode"}</span>
-              {darkMode ? (
-                <FiSun className="ml-2" />
-              ) : (
-                <FiMoon className="ml-2" />
-              )}
+              <span>{darkMode ? `${t("dark")}` : `${t("light")}`}</span>
+              {darkMode ? <FiSun className="ml-2" /> : <FiMoon className="ml-2" />}
             </div>
           </div>
         )}

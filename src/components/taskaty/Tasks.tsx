@@ -2,8 +2,10 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { FiEye } from "react-icons/fi";
 import FilterBtn from "./FilterBtn";
+import { useTranslations } from "next-intl";
 
 const Tasks = () => {
+  const t = useTranslations("Tasks")
   const tasks = [
     { id: 1, title: "Task 1", status: "Completed" },
     { id: 2, title: "Task 2", status: "In Progress" },
@@ -18,21 +20,19 @@ const Tasks = () => {
           <div className="table w-full bg-royalPurple text-white font-semibold rounded-t-lg">
             <div className="table-row">
               <div className="table-cell w-1/2 text-center p-3 border-r border-gray-300">
-                <p>Taskaty</p>
+                <p>{t('taskaty')}</p>
               </div>
               <div className="table-cell w-1/3 text-center p-3 border-r border-gray-300">
-                <p>Status</p>
+                <p>{t('status')}</p>
               </div>
               <div className="table-cell w-1/6 text-center p-3">
-                <p>Details</p>
+                <p>{t('details')}</p>
               </div>
             </div>
           </div>
 
-          {/* Espacement entre le header et les lignes */}
           <div className="my-2"></div>
 
-          {/* Lignes du tableau */}
           {tasks.map((task) => (
             <div
               className="table w-full bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 shadow-md mb-2 rounded-lg"

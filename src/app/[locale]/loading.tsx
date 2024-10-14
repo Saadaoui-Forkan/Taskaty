@@ -7,6 +7,5 @@ const LoadingPage: React.FC = () => {
             <div className="line-loader"></div>
         </div>
     );
-  };
-  
+  };  
   export default LoadingPage;

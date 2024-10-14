@@ -4,7 +4,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { FiFilter } from "react-icons/fi";
 
 const FilterSidebar = () => {
-  const [isOpen, setIsOpen] = useState(false); // Par défaut, le sidebar est fermé
+  const [isOpen, setIsOpen] = useState(false); 
 
   const handleClose = () => {
     setIsOpen(false);

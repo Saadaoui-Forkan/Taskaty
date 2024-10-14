@@ -2,8 +2,10 @@
 import { useState } from "react";
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
+import { useTranslations } from "next-intl";
 
 const Auth = () => {
+  const t = useTranslations('Auth')
   const [activeTab, setActiveTab] = useState<string>("register");
   return (
     <div className="bg-royalPurple dark:bg-slateGray p-8 rounded-lg shadow-md max-w-md w-full mx-auto mt-10 transition-all duration-300">
@@ -17,7 +19,7 @@ const Auth = () => {
             }`}
             onClick={() => setActiveTab("register")}
           >
-            Register
+            {t('register')}
           </button>
         </li>
 
@@ -33,27 +35,17 @@ const Auth = () => {
             }`}
             onClick={() => setActiveTab("login")}
           >
-            Log In
+            {t('login')}
           </button>
         </li>
       </ul>
 
       <div className="w-full">
         {activeTab === "register" && (
-          <div>
-            <h1 className="text-2xl text-center text-white mb-4">
-              Sign Up for Free
-            </h1>
-            <RegisterForm />
-          </div>
+          <RegisterForm />
         )}
         {activeTab === "login" && (
-          <div>
-            <h1 className="text-2xl text-center text-white mb-4">
-              Welcome Back!
-            </h1>
-            <LoginForm />
-          </div>
+          <LoginForm />
         )}
       </div>
     </div>

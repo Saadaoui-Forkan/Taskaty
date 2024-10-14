@@ -1,15 +1,17 @@
 "use client";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 const RegisterForm = () => {
+  const t = useTranslations('Auth')
   return (
     <div>
       <form>
         {/* First Name & Last Name Fields */}
         <div className="flex justify-between">
-          <div className="w-1/2 mr-2">
+          <div className="w-1/2 mx-2">
             <label className="text-dustyGray dark:text-coolGray">
-              First Name<span className="req text-rubyRed">*</span>
+              {t('first_name')}<span className="req text-rubyRed">*</span>
             </label>
             <input
               type="text"
@@ -22,9 +24,9 @@ const RegisterForm = () => {
             />
           </div>
 
-          <div className="w-1/2 ml-2">
+          <div className="w-1/2 mx-2">
             <label className="text-dustyGray dark:text-coolGray">
-              Last Name<span className="req text-rubyRed">*</span>
+              {t('last_name')}<span className="req text-rubyRed">*</span>
             </label>
             <input
               type="text"
@@ -41,7 +43,7 @@ const RegisterForm = () => {
         {/* Email Field */}
         <div className="mb-4">
           <label className="text-dustyGray dark:text-coolGray">
-            Email Address<span className="text-rubyRed">*</span>
+            {t('email')}<span className="text-rubyRed">*</span>
           </label>
           <input
             type="email"
@@ -57,7 +59,7 @@ const RegisterForm = () => {
         {/* Password Field */}
         <div className="mb-6">
           <label className="text-dustyGray dark:text-coolGray">
-            Password<span className="text-rubyRed">*</span>
+            {t('password')}<span className="text-rubyRed">*</span>
           </label>
           <input
             type="password"
@@ -77,7 +79,7 @@ const RegisterForm = () => {
                  text-white bg-leafGreen hover:bg-coralRed 
                  rounded-lg transition-all duration-300"
         >
-          Register
+          {t('register')}
         </button>
       </form>
     </div>

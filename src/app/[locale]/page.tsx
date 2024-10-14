@@ -1,8 +1,12 @@
+"use client"
+
+import { useTranslations } from "next-intl";
 import Auth from "@/components/auth/Auth";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 
 const AuthForm = () => {
+    const t = useTranslations('Home')
   return (
     <div className="min-h-screen bg-coolGray dark:bg-slateGray p-1 transition-all duration-300">
       {/* Logo Section */}
@@ -16,11 +20,9 @@ const AuthForm = () => {
           <span className="text-2xl font-bold text-leafGreen dark:text-goldenYellow">
             Taskaty
           </span>{" "}
-          is your personal to-do list app to easily manage, organize, and track
-          your notes. Simplify your daily tasks with a clean and intuitive
-          interface.
+          {t('intro')}
           <span className="font-semibold text-royalPurple dark:text-coralRed">
-            Get Started
+            {t('start')}
           </span>
         </p>
       </div>

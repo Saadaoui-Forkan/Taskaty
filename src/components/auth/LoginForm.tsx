@@ -1,14 +1,16 @@
 "use client";
+import { useTranslations } from "next-intl";
 import React from "react";
 
 const LoginForm = () => {
+  const t = useTranslations('Auth')
   return (
     <div>
       <form>
         {/* Email Field */}
         <div className="field-wrap mb-4">
           <label className="text-dustyGray dark:text-coolGray">
-            Email Address<span className="req text-rubyRed">*</span>
+            {t('email')}<span className="req text-rubyRed">*</span>
           </label>
           <input
             type="email"
@@ -24,7 +26,7 @@ const LoginForm = () => {
         {/* Password Field */}
         <div className="field-wrap mb-6">
           <label className="text-dustyGray dark:text-coolGray">
-            Password<span className="req text-rubyRed">*</span>
+            {t('password')}<span className="req text-rubyRed">*</span>
           </label>
           <input
             type="password"
@@ -37,20 +39,13 @@ const LoginForm = () => {
           />
         </div>
 
-        {/* Forgot Password */}
-        <p className="forgot text-right text-dustyGray dark:text-coolGray">
-          <a href="#" className="text-leafGreen hover:underline">
-            Forgot Password?
-          </a>
-        </p>
-
         {/* Login Button */}
         <button
           className="button button-block w-full py-2 text-lg font-semibold 
                  text-white bg-leafGreen hover:bg-coralRed 
                  rounded-lg transition-all duration-300"
         >
-          Login
+          {t('login')}
         </button>
       </form>
     </div>

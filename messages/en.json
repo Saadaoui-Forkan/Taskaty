@@ -1,0 +1,32 @@
+{
+    "Home": {
+        "intro": "Is your personal to-do list app to easily manage, organize, and track your notes. Simplify your daily tasks with a clean and intuitive interface.",
+        "start": "Get Started"
+    },
+    "Auth": {
+        "register": "Register",
+        "login": "Log In",
+        "email": "Email Address",
+        "password": "Password",
+        "first_name": "First Name",
+        "last_name": "Last Name"
+    },
+    "NotFound": {
+        "title": "Oops! Page not found",
+        "body": "Sorry, the page you&apos;re looking for doesn&apos;t exist.",
+        "back": "Back to Home"
+    },
+    "Fixed": {
+        "select": "select language",
+        "dark": "dark",
+        "light": "light"
+    },
+    "Logout": {
+        "logout": "Logout"
+    },
+    "Tasks": {
+        "taskaty": "Taskaty",
+        "status": "Status",
+        "details": "Details"
+    }
+}

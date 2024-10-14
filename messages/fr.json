@@ -1,0 +1,32 @@
+{
+    "Home": {
+        "intro": "C'est votre application de liste de tâches personnelle pour gérer, organiser et suivre vos notes facilement. Simplifiez vos tâches quotidiennes avec une interface claire et intuitive.",
+        "start": "Commencer"
+    },
+    "Auth": {
+        "register": "S'inscrire",
+        "login": "Se connecter",
+        "email": "Adresse e-mail",
+        "password": "Mot de passe",
+        "first_name": "Prénom",
+        "last_name": "Nom de famille"
+    },
+    "NotFound": {
+        "title": "Oups ! Page non trouvée",
+        "body": "Désolé, la page que vous recherchez n'existe pas.",
+        "back": "Retour à l'accueil"
+    },
+    "Fixed": {
+        "select": "choisir la langue",
+        "dark": "jour",
+        "light": "nuit"
+    },
+    "Logout": {
+        "logout": "Deconnexion"
+    },
+    "Tasks": {
+        "taskaty": "Taskaty",
+        "status": "Statut",
+        "details": "Détails"
+    }
+}
