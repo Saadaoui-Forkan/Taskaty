@@ -1,4 +1,5 @@
-## Custom  dark/light mode
+### Custom  dark/light mode
+------------------------------------------------------------------------------------
 __tailwind.config.ts__
 ```
 const config: Config = {
@@ -64,6 +65,7 @@ const {darkMode, toggleMode} = useContext(ThemeContext)
 onClick={toggleDropdown}
 ```
 ### Implementing next-intel
+--------------------------------------------------------------------------
 __src/i18n.ts__
 ```
 import { getRequestConfig } from "next-intl/server";
@@ -277,6 +279,7 @@ export default Fixed;
 ```
 
 ### Prisma Setup
+----------------------------------------------------------------------------
 1. installation
 ```npm i -D prisma```
 
