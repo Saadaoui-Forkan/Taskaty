@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Fixed from "@/components/fixed";
+import Fixed from "@/components/switcher";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { ReactNode } from "react";
 

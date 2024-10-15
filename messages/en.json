@@ -28,5 +28,8 @@
         "taskaty": "Taskaty",
         "status": "Status",
         "details": "Details"
+    },
+    "Footer": {
+        "copyright": "All rights reserved"
     }
 }

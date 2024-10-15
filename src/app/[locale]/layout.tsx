@@ -1,10 +1,10 @@
 import { NextIntlClientProvider } from "next-intl";
 import { ReactNode } from "react";
-import Fixed from "@/components/fixed";
+import Switcher from "@/components/switcher";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { Tajawal } from "next/font/google";
 import { notFound } from "next/navigation";
-import NotFound from "./not-found";
+import Footer from "@/components/footer";
 
 const ubuntu = Tajawal({
   subsets: ["arabic"],
@@ -32,8 +32,9 @@ export default async function RootLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider>
             <>
-              <Fixed />
+              <Switcher />
               {children}
+              <Footer/>
             </>
           </ThemeProvider>
         </NextIntlClientProvider>

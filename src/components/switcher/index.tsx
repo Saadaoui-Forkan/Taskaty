@@ -1,5 +1,4 @@
 "use client";
-
 import { ChangeEvent, useContext, useState, useTransition } from 'react';
 import { ThemeContext } from "@/context/ThemeContext";
 import { useLocale, useTranslations } from "next-intl";
