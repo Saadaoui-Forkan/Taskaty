@@ -275,3 +275,49 @@ const Fixed = () => {
 
 export default Fixed;
 ```
+
+### Prisma Setup
+1. installation
+```npm i -D prisma```
+
+2. install prisma client 
+```npx prisma init```
+
+3. set DATABASE_URL in .env
+```DATABASE_URL="postgresql://postgres:****************@localhost:5432/taskatyDB?schema=public"```
+
+4. create prisma schema in prisma/schema.prisma
+```
+model User {
+  id         Int      @id @default(autoincrement())
+  first_name String   @db.VarChar(100)
+  last_name  String   @db.VarChar(100)
+  email      String   @unique
+  password   String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  //Every user can create many tasks
+  tasks Task @relation("UserTasks")
+}
+```
+```
+model Task {
+  id          Int      @id @default(autoincrement())
+  title       String   @db.VarChar(200)
+  description String   @db.VarChar(100)
+  from        DateTime @default(now())
+  to          DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  //Every Task should have a user
+  userId Int 
+  //One-To-Many relation between User & Task
+  user User @relation("UserTasks", fields: [userId], references: [id]) 
+}
+```
+
+5. run
+ ```npx prisma migrate dev --name create_user_table_task_table_and_relationship```
+
+6. open prisma client ```npx prisma studio```
+

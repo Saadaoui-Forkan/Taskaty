@@ -8,6 +8,10 @@
   @apply transition-colors duration-300
 }
 
+.fix-height {
+  min-height: calc(100vh - 180px);
+}
+
 .line-loader {
     @apply w-32 h-1 bg-blue-600 rounded; 
     position: relative; 
