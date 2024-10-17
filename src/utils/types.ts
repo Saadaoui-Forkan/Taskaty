@@ -4,3 +4,8 @@ export type JWTPayload = {
     last_name: string,
     email: string
 }
+
+export interface Alert {
+  alertText: string;
+  type: string;
+}

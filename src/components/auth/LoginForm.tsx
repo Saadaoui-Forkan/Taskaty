@@ -9,7 +9,7 @@ const LoginForm = () => {
       <form>
         {/* Email Field */}
         <div className="field-wrap mb-4">
-          <label className="text-dustyGray dark:text-coolGray">
+          <label className="text-white dark:text-coolGray">
             {t('email')}<span className="req text-rubyRed">*</span>
           </label>
           <input
@@ -25,7 +25,7 @@ const LoginForm = () => {
 
         {/* Password Field */}
         <div className="field-wrap mb-6">
-          <label className="text-dustyGray dark:text-coolGray">
+          <label className="text-white dark:text-coolGray">
             {t('password')}<span className="req text-rubyRed">*</span>
           </label>
           <input
@@ -38,7 +38,7 @@ const LoginForm = () => {
                    rounded-lg focus:outline-none focus:border-leafGreen"
           />
         </div>
-
+        <p className="text-rubyRed mb-4">* {t('required')}</p>
         {/* Login Button */}
         <button
           className="button button-block w-full py-2 text-lg font-semibold 

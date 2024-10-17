@@ -1,14 +1,20 @@
 "use client";
 import { ChangeEvent, useContext, useState, useTransition } from 'react';
-import { ThemeContext } from "@/context/ThemeContext";
+import { AppContext } from "@/context/AppContext";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { CiSettings } from "react-icons/ci";
 import { FiMoon, FiSun } from "react-icons/fi";
 
-const Fixed = () => {
+const Switcher = () => {
   const t = useTranslations("Fixed");
-  const { darkMode, toggleMode } = useContext(ThemeContext);
+  const context = useContext(AppContext);
+
+  if (!context) {
+    throw new Error("AppContext is not provided");
+  }
+
+  const { darkMode, toggleMode } = context
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -71,7 +77,7 @@ const Fixed = () => {
                      dark:text-white hover:bg-gray-200 dark:hover:bg-gray-600 
                      cursor-pointer transition-all duration-300"
             >
-              <span>{darkMode ? `${t("dark")}` : `${t("light")}`}</span>
+              <span>{darkMode ? `${t("light")}` : `${t("dark")}`}</span>
               {darkMode ? <FiSun className="ml-2" /> : <FiMoon className="ml-2" />}
             </div>
           </div>
@@ -81,4 +87,4 @@ const Fixed = () => {
   );
 };
 
-export default Fixed;
+export default Switcher;

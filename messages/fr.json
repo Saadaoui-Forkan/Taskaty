@@ -9,7 +9,8 @@
         "email": "Adresse e-mail",
         "password": "Mot de passe",
         "first_name": "Prénom",
-        "last_name": "Nom de famille"
+        "last_name": "Nom de famille",
+        "required": "Champ Obligatoire"
     },
     "NotFound": {
         "title": "Oups ! Page non trouvée",

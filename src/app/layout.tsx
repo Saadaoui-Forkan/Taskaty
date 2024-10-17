@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Fixed from "@/components/switcher";
-import { ThemeProvider } from "@/context/ThemeContext";
+import { ThemeProvider } from "@/context/AppContext";
 import { ReactNode } from "react";
 
 export const metadata: Metadata = {

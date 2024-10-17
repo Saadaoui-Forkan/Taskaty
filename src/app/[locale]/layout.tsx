@@ -1,7 +1,7 @@
 import { NextIntlClientProvider } from "next-intl";
 import { ReactNode } from "react";
 import Switcher from "@/components/switcher";
-import { ThemeProvider } from "@/context/ThemeContext";
+import { AppProvider } from "@/context/AppContext";
 import { Tajawal } from "next/font/google";
 import { notFound } from "next/navigation";
 import Footer from "@/components/footer";
@@ -30,13 +30,13 @@ export default async function RootLayout({
     <html lang={locale} dir={locale === "ar" ? "rtl" : "ltr"}>
       <body className={ubuntu.className}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <ThemeProvider>
+          <AppProvider>
             <>
               <Switcher />
               {children}
               <Footer/>
             </>
-          </ThemeProvider>
+          </AppProvider>
         </NextIntlClientProvider>
       </body>
     </html>
