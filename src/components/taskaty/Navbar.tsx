@@ -1,18 +1,15 @@
 "use client";
-
 import { useTranslations } from "next-intl";
 import { FiBell } from "react-icons/fi";
-import { useContext, useEffect, useState } from "react";
-import { AppContext } from "@/context/AppContext";
+import { useEffect, useState } from "react"
+import { JWTPayload } from "@/utils/types";
 
-const Navbar = () => {
+interface NavBarProps {
+  payload: JWTPayload | null
+}
+
+const Navbar = ({payload}: NavBarProps) => {
   const t = useTranslations("Logout");
-
-  const context = useContext(AppContext)
-  if (!context) {
-    throw new Error("AppContext must be used within an AppProvider");
-  }
-  const { username } = context;
 
   const [direction, setDirection] = useState<"ltr" | "rtl">("ltr");
 
@@ -49,7 +46,9 @@ const Navbar = () => {
             direction === "rtl" ? "ml-2 md:ml-4" : "mr-2 md:mr-4"
           }`}
         >
-          <h1 className="font-semibold dark:text-white">{username}</h1>
+          <h1 className="font-semibold dark:text-white">
+            {payload?.first_name}
+          </h1>
           <button
             className="text-blue-600 dark:text-blue-400 hover:underline transition-all mx-2"
           >

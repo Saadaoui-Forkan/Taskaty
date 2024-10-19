@@ -5,6 +5,7 @@ import axios, { AxiosError } from "axios";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useContext, useEffect, useState } from "react";
+import Toast from "../toast";
 
 const LoginForm = () => {
   const t = useTranslations('Auth')
@@ -49,6 +50,7 @@ const LoginForm = () => {
   }, [alert]);
   return (
     <div>
+      {alert.type && <Toast alertText={alert.alertText} type={alert.type} />}
       <form onSubmit={submitFormHandler}>
         {/* Email Field */}
         <div className="field-wrap mb-4">
