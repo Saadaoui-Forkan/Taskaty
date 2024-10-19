@@ -6,6 +6,10 @@ import bcrypt from "bcryptjs";
 import { JWTPayload } from "@/utils/types";
 import { setCookie } from "@/utils/generateToken";
 
+function getTranslations(locale: string) {
+  return require(`../../../../../messages/${locale}.json`);
+}
+
 /**
  *  @method  POST
  *  @route   /api/auth/register
@@ -13,8 +17,8 @@ import { setCookie } from "@/utils/generateToken";
  *  @access  public
 */
 export async function POST(request: NextRequest) {
-  try {
     const body = (await request.json()) as RegisterUserDTO;
+  try {
 
     // validation
     const validation = registerSchema.safeParse(body);
@@ -62,7 +66,7 @@ export async function POST(request: NextRequest) {
 
     // send data to database
     return NextResponse.json(
-      { ...newUser, message: "Registered & Authenticated" },
+      { ...newUser },
       { status: 201, headers: { "Set-Cookie": cookie } }
     );
   } catch (error) {

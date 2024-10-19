@@ -1,11 +1,15 @@
 "use client";
 import { useTranslations } from "next-intl";
-import React, { FormEvent, useContext, useState } from "react";
+import React, { FormEvent, useContext, useEffect, useState } from "react";
 import Toast from "../toast";
 import { AppContext } from "@/context/AppContext";
+import axios, { AxiosError } from "axios";
+import { ErrorResponse } from "@/utils/types";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
   const t = useTranslations("Auth");
+  const router = useRouter();
   const context = useContext(AppContext);
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
@@ -16,18 +20,65 @@ const RegisterForm = () => {
   if (!context) {
     throw new Error("AppContext must be used within an AppProvider");
   }
-  const { alert, setAlert } = context;
+  const { alert, setAlert, setUsername } = context;
 
-  const submitFormHandler = (e: FormEvent) => {
+  const submitFormHandler = async (e: FormEvent) => {
     e.preventDefault();
-    console.log(first_name, last_name, email, password)
+    setLoading(true);
+    // Validation
+    if (first_name === "") {
+      setAlert({ alertText: "First Name is required", type: "error" });
+      setLoading(false);
+      return;
+    }
+    if (last_name === "") {
+      setAlert({ alertText: "Last Name is required", type: "error" });
+      setLoading(false);
+      return;
+    }
+    if (email === "") {
+      setAlert({ alertText: "Email is required", type: "error" });
+      setLoading(false);
+      return;
+    }
+    if (password === "") {
+      setAlert({ alertText: "Password is required", type: "error" });
+      setLoading(false);
+      return;
+    }
+
+    try {
+      await axios.post(`http://localhost:3000/api/auth/register`, {
+        last_name,
+        first_name,
+        email,
+        password,
+      });
+      router.replace("/taskaties");
+      setUsername(first_name)
+      setLoading(false);
+      router.refresh();
+    } catch (error) {
+      const axiosError = error as AxiosError<ErrorResponse>;
+      console.log(axiosError);
+      const errorMessage =
+        axiosError.response?.data?.message || "An error occurred";
+      setAlert({ alertText: errorMessage, type: "error" });
+    } finally {
+      setLoading(false);
+    }
   };
+  useEffect(() => {
+    if (alert.type !== "") {
+      setTimeout(() => {
+        setAlert({ alertText: "", type: "" });
+      }, 5000);
+    }
+  }, [alert]);
 
   return (
     <div>
-      {/* {alert.alertText && ( */}
-        <Toast alertText="warning message" type="warning" />
-      
+      {alert.type && <Toast alertText={alert.alertText} type={alert.type} />}
       <form onSubmit={submitFormHandler}>
         {/* First Name & Last Name Fields */}
         <div className="flex justify-between">
@@ -41,11 +92,9 @@ const RegisterForm = () => {
               name="firstName"
               value={first_name}
               onChange={(e) => setFirst_name(e.target.value)}
-              className={`w-full p-2 border ${
-                first_name === "" ? "border-rubyRed" : "border-coolGray"
-              } dark:border-white 
-                     bg-white dark:bg-slateGray text-slateGray dark:text-white 
-                     rounded-lg focus:outline-none focus:border-leafGreen`}
+              className="w-full p-2 border border-coolGray dark:border-white 
+                      bg-white dark:bg-slateGray text-slateGray dark:text-white 
+                        rounded-lg focus:outline-none"
             />
           </div>
 
@@ -60,11 +109,9 @@ const RegisterForm = () => {
               autoComplete="off"
               value={last_name}
               onChange={(e) => setLast_name(e.target.value)}
-              className={`w-full p-2 border ${
-                first_name === "" ? "border-rubyRed" : "border-coolGray"
-              } dark:border-white 
-                     bg-white dark:bg-slateGray text-slateGray dark:text-white 
-                     rounded-lg focus:outline-none focus:border-leafGreen`}
+              className={`w-full p-2 border border-coolGray dark:border-white 
+                      bg-white dark:bg-slateGray text-slateGray dark:text-white 
+                        rounded-lg focus:outline-none focus:border-leafGreen`}
             />
           </div>
         </div>
@@ -81,11 +128,9 @@ const RegisterForm = () => {
             autoComplete="off"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className={`w-full p-2 border ${
-              email === "" ? "border-rubyRed" : "border-coolGray"
-            } dark:border-white 
-                   bg-white dark:bg-slateGray text-slateGray dark:text-white 
-                   rounded-lg focus:outline-none focus:border-leafGreen`}
+            className={`w-full p-2 border border-coolGray dark:border-white 
+                    bg-white dark:bg-slateGray text-slateGray dark:text-white 
+                      rounded-lg focus:outline-none focus:border-leafGreen`}
           />
         </div>
 
@@ -101,11 +146,9 @@ const RegisterForm = () => {
             autoComplete="off"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className={`w-full p-2 border ${
-              password === "" ? "border-rubyRed" : "border-coolGray"
-            } dark:border-white 
-                   bg-white dark:bg-slateGray text-slateGray dark:text-white 
-                   rounded-lg focus:outline-none focus:border-leafGreen`}
+            className={`w-full p-2 border border-coolGray dark:border-white 
+                    bg-white dark:bg-slateGray text-slateGray dark:text-white 
+                      rounded-lg focus:outline-none focus:border-leafGreen`}
           />
         </div>
         <p className="text-rubyRed mb-4">* {t("required")}</p>
@@ -113,10 +156,14 @@ const RegisterForm = () => {
         <button
           type="submit"
           className="button button-block w-full py-2 text-lg font-semibold 
-                 text-white bg-leafGreen hover:bg-coralRed 
-                 rounded-lg transition-all duration-300"
+                  text-white bg-leafGreen hover:bg-coralRed 
+                    rounded-lg transition-all duration-300"
         >
-          {t("register")}
+          {loading ? (
+            <span className="animate-spin rounded-full h-5 w-5 border-t-2 border-r-2 border-white inline-block"></span>
+          ) : (
+            t("register")
+          )}
         </button>
       </form>
     </div>

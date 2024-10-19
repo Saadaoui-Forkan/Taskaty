@@ -9,3 +9,7 @@ export interface Alert {
   alertText: string;
   type: string;
 }
+
+export interface ErrorResponse {
+  message: string;
+}

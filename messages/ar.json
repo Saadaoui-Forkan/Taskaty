@@ -10,7 +10,9 @@
         "password": "كلمة المرور",
         "first_name": "الاسم الأول",
         "last_name": "اسم العائلة",
-        "required": "حقل إلزامي"
+        "required": "حقل إلزامي",
+        "user_already_exists": "هذا المستخدم مسجل مسبقا",
+        "internal_server_error": "خطأ من الخادم"
     },
     "NotFound": {
         "title": "عذرًا! الصفحة غير موجودة",

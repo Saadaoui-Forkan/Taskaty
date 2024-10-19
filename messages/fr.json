@@ -10,7 +10,9 @@
         "password": "Mot de passe",
         "first_name": "Prénom",
         "last_name": "Nom de famille",
-        "required": "Champ Obligatoire"
+        "required": "Champ Obligatoire",
+        "user_already_exists": "L'utilisateur existe déjà",
+        "internal_server_error": "Erreur interne du serveur"
     },
     "NotFound": {
         "title": "Oups ! Page non trouvée",
