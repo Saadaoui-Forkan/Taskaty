@@ -54,3 +54,27 @@ export const loginSchema = z.object({
     required_error: "Password is required",
   }),
 });
+
+// Create Task
+export const createTaskSchema = z.object({
+  title: z
+    .string({
+      required_error: "This Field Is Required",
+    })
+    .min(10, {
+      message:
+        "This field must contain at least 10 characters and a maximum of 200 characters.",
+    })
+    .max(200, {
+      message:
+        "This field must contain at least 10 characters and a maximum of 200 characters.",
+    }),
+
+  description: z
+    .string({
+      required_error: "This Field Is Required",
+    })
+    .min(20, {
+      message: "This field must contain at least 20 characters.",
+    }),
+});

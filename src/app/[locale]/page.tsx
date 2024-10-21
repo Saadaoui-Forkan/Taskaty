@@ -1,12 +1,11 @@
-"use client"
-
+"use client";
 import { useTranslations } from "next-intl";
 import Auth from "@/components/auth/Auth";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
 
 const AuthForm = () => {
-    const t = useTranslations('Home')
+  const t = useTranslations("Home");
   return (
     <div className="min-h-screen bg-coolGray dark:bg-slateGray p-1 transition-all duration-300">
       {/* Logo Section */}
@@ -20,9 +19,9 @@ const AuthForm = () => {
           <span className="text-2xl font-bold text-leafGreen dark:text-goldenYellow">
             Taskaty
           </span>{" "}
-          {t('intro')}
+          {t("intro")}
           <span className="font-semibold text-royalPurple dark:text-coralRed">
-            {t('start')}
+            {t("start")}
           </span>
         </p>
       </div>
