@@ -4,6 +4,7 @@ import { FiEye } from "react-icons/fi";
 import FilterBtn from "./FilterBtn";
 import { useTranslations } from "next-intl";
 import { Task } from "@prisma/client";
+import AddTask from "./AddTask";
 
 interface TasksProps {
   tasks: Task[]
@@ -14,6 +15,7 @@ const Tasks = ({tasks}: TasksProps) => {
   return (
     <div className="fix-height">
       <FilterBtn />
+      <AddTask/>
       <div className="mx-auto mt-14">
         <div className="w-10/12 md:w-4/5 mx-auto text-sm md:text-lg">
           {/* Header du tableau */}

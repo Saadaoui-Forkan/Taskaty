@@ -28,7 +28,7 @@ const FilterSidebar = () => {
           onClick={handleClose}
           className="absolute top-4 right-4 text-rubyRed hover:text-coralRed transition-all"
         >
-          <IoIosCloseCircle className="text-4xl" />
+          <IoIosCloseCircle className="text-2xl" />
         </button>
 
         {/* Filters Title */}
@@ -84,10 +84,9 @@ const FilterSidebar = () => {
       {!isOpen && (
         <button
           onClick={handleOpen}
-          className="fixed top-16 left-4 p-3 bg-royalPurple text-white rounded-full shadow-lg 
-             hover:bg-leafGreen transition-all duration-300"
+          className="fixed top-16 left-4 p-2 bg-royalPurple text-white rounded-full w-10 h-10 flex items-center justify-center"
         >
-          <FiFilter className="text-2xl" />
+          <FiFilter className="text-xl" />
         </button>
       )}
     </div>
