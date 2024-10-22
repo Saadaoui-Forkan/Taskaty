@@ -48,7 +48,7 @@ const RegisterForm = () => {
     }
 
     try {
-      await axios.post(`http://localhost:3000/api/auth/register`, {
+      await axios.post(`${process.env.NEXT_PUBLIC_AUTH_API_DOMAIN}/register`, {
         last_name,
         first_name,
         email,

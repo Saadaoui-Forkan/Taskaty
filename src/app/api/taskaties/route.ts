@@ -2,6 +2,7 @@ import prisma from "@/utils/db";
 import { CreateTaskDTO } from "@/utils/dtos";
 import { createTaskSchema } from "@/utils/validationsSchema";
 import { verifyToken } from "@/utils/verifyToken";
+import { TaskStatus } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 /**
@@ -65,6 +66,7 @@ export async function POST(request: NextRequest) {
                 description: body.description,
                 from: fromDate,
                 to: toDate,
+                status: body.status as TaskStatus,
                 userId: user.id
             }
         })

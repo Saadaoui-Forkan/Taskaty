@@ -1,6 +1,7 @@
 import prisma from "@/utils/db";
 import { UpdateTaskDTO } from "@/utils/dtos";
 import { verifyToken } from "@/utils/verifyToken";
+import { TaskStatus } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Props {
@@ -8,9 +9,9 @@ interface Props {
 }
 
 /**
- *  @method  PUT
+ *  @method  GET
  *  @route   /api/taskaties/:id
- *  @desc    Update My Task
+ *  @desc    Get Single Task
  *  @access  private (only user himself)
 */
 export async function GET(request: NextRequest, {params: {id}}: Props) {
@@ -65,9 +66,9 @@ export async function PUT(request: NextRequest, { params }: Props) {
         description: body.description,
         from: body.from,
         to: body.to,
+        status: body.status as TaskStatus,
       },
     });
-    console.log(updatedTask);
     return NextResponse.json(updatedTask, { status: 200 });
   } catch (error) {
     console.error("Error: ", error);

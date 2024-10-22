@@ -1,3 +1,5 @@
+import { TaskStatus } from "@prisma/client";
+
 // Register
 export interface RegisterUserDTO {
     last_name: string;
@@ -18,6 +20,7 @@ export interface CreateTaskDTO {
     description: string,
     from: Date,
     to: Date,
+    status: TaskStatus,
 }
 
 //  Update Task
@@ -26,4 +29,5 @@ export interface UpdateTaskDTO {
     description?: string,
     from?: Date,
     to?: Date,
+    status?: TaskStatus,
 }

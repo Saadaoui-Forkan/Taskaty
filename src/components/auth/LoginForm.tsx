@@ -24,7 +24,7 @@ const LoginForm = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post(`http://localhost:3000/api/auth/login`, {
+      await axios.post(`${process.env.NEXT_PUBLIC_AUTH_API_DOMAIN}/login`, {
         email,
         password,
       });
