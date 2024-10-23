@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-build-classic": "^43.2.0",
-    "@ckeditor/ckeditor5-react": "^9.3.1",
     "@prisma/client": "^5.20.0",
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
@@ -18,9 +16,11 @@
     "jsonwebtoken": "^9.0.2",
     "next": "14.2.15",
     "next-intl": "^3.21.1",
+    "quill": "^2.0.2",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.3.0",
+    "react-quill": "^2.0.0",
     "zod": "^3.23.8"
   },
   "devDependencies": {

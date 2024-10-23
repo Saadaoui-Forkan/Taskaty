@@ -5,7 +5,6 @@ import { verifyTokenForClient } from "@/utils/verifyToken";
 import { Task } from "@prisma/client";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import React from "react";
 
 const Taskaty = async() => {
   const token = cookies().get("jwtToken")?.value || ""

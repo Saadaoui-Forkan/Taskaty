@@ -1,44 +1,62 @@
 "use client";
+import React, { SetStateAction, useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
-import React, { useState } from 'react';
-const DynamicCKEditor = dynamic(
-    async () => {
-      const { CKEditor } = await import('@ckeditor/ckeditor5-react');
-      const ClassicEditor = await import('@ckeditor/ckeditor5-build-classic');
-      return (props: any) => <CKEditor editor={ClassicEditor.default} {...props} />;
-    },
-    { ssr: false }
-  );
-  
-const Description = () => {
-  const [data, setData] = useState<string>('');
+import 'react-quill/dist/quill.snow.css';
 
+const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
+
+// type DescriptionType = {
+//   content: string
+// } 
+
+const Description = () => {
+  const [description, setDescription] = useState<string>('');
+
+  const quillModules = {
+    toolbar: [
+      [{ header: [1, 2, 3, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['link', 'image'],
+      [{ align: [] }],
+      [{ color: [] }],
+      ['code-block'],
+      ['clean'],
+    ],
+  };
+
+
+  const quillFormats = [
+    'header',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'blockquote',
+    'list',
+    'bullet',
+    'link',
+    'image',
+    'align',
+    'color',
+    'code-block',
+  ];
+
+
+  const handleEditorChange = (content: SetStateAction<string>) => {
+    setDescription(content);
+  };
   return (
-    <div className="editor-container space-y-2">
-      <p className="text-gray-800 dark:text-gray-300 font-medium mb-2">
+    <div className=" bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900">
+      <h2 className="text-gray-800 dark:text-gray-300 font-medium mb-2">
         Task Description
-      </p>
-      <DynamicCKEditor 
-        config={{
-          toolbar: [
-            'heading',
-            '|',
-            'bold',
-            'italic',
-            'link',
-            '|',
-            'bulletedList',
-            'numberedList',
-            '|',
-            'undo',
-            'redo',
-          ],
-        }}
-        onChange={(event: any, editor: { getData: () => string }) => {
-          const content = editor.getData();
-          console.log(content);
-          setData(content);
-        }}
+      </h2>
+      <QuillEditor
+        value={description}
+        onChange={handleEditorChange}
+        modules={quillModules}
+        formats={quillFormats}
+        className="w-full bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-4 focus:ring-indigo-400 focus:border-indigo-500 transition-all text-gray-900 dark:text-gray-100 text-xl"
       />
     </div>
   );

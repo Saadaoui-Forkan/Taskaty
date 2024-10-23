@@ -29,7 +29,7 @@ const AddTask = () => {
     {/* Modal */}
     {openTaskModal && (
       <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-11/12 max-w-lg shadow-xl overflow-auto max-h-[85vh]">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6  w-11/12 md:w-3/4 shadow-xl overflow-auto max-h-[85vh]">
           {/* Close Button */}
           <button
             onClick={handleCloseTaskModal}
