@@ -1,12 +1,19 @@
 "use client";
-import React, { SetStateAction, useEffect, useState } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import dynamic from 'next/dynamic';
 import 'react-quill/dist/quill.snow.css';
+import { useTranslations } from 'next-intl';
 
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
-const Description = () => {
-  const [description, setDescription] = useState<string>('');
+type DescriptionProps = {
+  description: string,
+  setDescription: React.Dispatch<React.SetStateAction<string>>
+}
+
+const Description = ({description, setDescription}: DescriptionProps) => {
+  const t = useTranslations('Add Task')
+  // const [description, setDescription] = useState<string>('');
 
   const quillModules = {
     toolbar: [
@@ -43,7 +50,7 @@ const Description = () => {
   return (
     <div className=" bg-gradient-to-br from-white to-gray-100 dark:from-gray-800 dark:to-gray-900">
       <h2 className="text-gray-800 dark:text-gray-300 font-medium mb-2">
-        Task Description
+        {t('task_description')}
       </h2>
       <QuillEditor
         value={description}

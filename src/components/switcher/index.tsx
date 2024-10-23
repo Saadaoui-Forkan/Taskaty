@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, useContext, useState, useTransition } from 'react';
+import { ChangeEvent, FormEvent, useContext, useState, useTransition } from 'react';
 import { AppContext } from "@/context/AppContext";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";

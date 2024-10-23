@@ -34,5 +34,18 @@
     },
     "Footer": {
         "copyright": "جميع الحقوق محفوظة"
+    },
+    "Add Task": {
+        "title": "العنوان",
+        "enter_task_title": "أدخل عنوان المهمة",
+        "task_description": "وصف المهمة",
+        "status": "الحالة",
+        "not_started": "لم تبدأ",
+        "in_progress": "قيد التنفيذ",
+        "completed": "منجزة",
+        "from": "بداية المهمة",
+        "to": "نهاية المهمة",
+        "add_task": "إضافة مهمة",
+        "cancel": "إلغاء"
     }
 }

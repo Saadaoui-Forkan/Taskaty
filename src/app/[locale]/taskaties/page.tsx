@@ -17,7 +17,7 @@ const Taskaty = async() => {
   return (
     <div className="dark:bg-dustyGray">
       <Navbar payload = {payload}/>
-      <Tasks tasks={tasks}/>
+      <Tasks tasks={tasks} token={token}/>
     </div>
   );
 };

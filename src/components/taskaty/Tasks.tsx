@@ -7,15 +7,16 @@ import { Task } from "@prisma/client";
 import AddTask from "./AddTask";
 
 interface TasksProps {
-  tasks: Task[]
+  tasks: Task[],
+  token: string
 }
 
-const Tasks = ({tasks}: TasksProps) => {
+const Tasks = ({tasks, token}: TasksProps) => {
   const t = useTranslations("Tasks");
   return (
     <div className="fix-height">
       <FilterBtn />
-      <AddTask/>
+      <AddTask token={token}/>
       <div className="mx-auto mt-14">
         <div className="w-10/12 md:w-4/5 mx-auto text-sm md:text-lg">
           {/* Header du tableau */}

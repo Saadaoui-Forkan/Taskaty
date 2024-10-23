@@ -1,7 +1,6 @@
 import prisma from "@/utils/db";
 import { UpdateTaskDTO } from "@/utils/dtos";
 import { verifyToken } from "@/utils/verifyToken";
-import { TaskStatus } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
 
 interface Props {
@@ -66,7 +65,7 @@ export async function PUT(request: NextRequest, { params }: Props) {
         description: body.description,
         from: body.from,
         to: body.to,
-        status: body.status as TaskStatus,
+        status: body.status,
       },
     });
     return NextResponse.json(updatedTask, { status: 200 });

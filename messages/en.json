@@ -34,5 +34,18 @@
     },
     "Footer": {
         "copyright": "All rights reserved"
+    },
+    "Add Task": {
+        "title": "Title",
+        "enter_task_title": "Enter task title",
+        "task_description": "Task Description",
+        "status": "Status",
+        "not_started": "Not Started",
+        "in_progress": "In Progress",
+        "completed": "Completed",
+        "from": "From",
+        "to": "To",
+        "add_task": "Add Task",
+        "cancel": "Cancel"
     }
 }

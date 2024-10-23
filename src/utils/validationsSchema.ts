@@ -59,7 +59,7 @@ export const loginSchema = z.object({
 export const createTaskSchema = z.object({
   title: z
     .string({
-      required_error: "This Field Is Required",
+      required_error: "Title Is Required",
     })
     .min(10, {
       message:
@@ -72,7 +72,7 @@ export const createTaskSchema = z.object({
 
   description: z
     .string({
-      required_error: "This Field Is Required",
+      required_error: "This Field (description) Is Required",
     })
     .min(20, {
       message: "This field must contain at least 20 characters.",

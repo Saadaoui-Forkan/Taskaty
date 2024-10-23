@@ -7,11 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum TaskStatus {
-  NotStarted  @map("Not Started")
-  InProgress  @map("In Progress")
-  Completed
-}
 model User {
   id         Int      @id @default(autoincrement())
   first_name String   @db.VarChar(100)
@@ -29,7 +24,7 @@ model Task {
   description String   @db.Text //No character limit
   from        DateTime @default(now())
   to          DateTime
-  status      TaskStatus @default(NotStarted)
+  status      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   userId      Int

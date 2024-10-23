@@ -34,5 +34,18 @@
     },
     "Footer": {
         "copyright": "Tous droits réservés"
+    },
+    "Add Task": {
+        "title": "Titre",
+        "enter_task_title": "Entrez le titre de la tâche",
+        "task_description": "Description de la tâche",
+        "status": "Statut",
+        "not_started": "Pas commencé",
+        "in_progress": "En cours",
+        "completed": "Terminée",
+        "from": "Debut",
+        "to": "Fin",
+        "add_task": "Ajouter une tâche",
+        "cancel": "Annuler"
     }
 }
