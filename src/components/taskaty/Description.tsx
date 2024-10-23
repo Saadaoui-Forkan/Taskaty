@@ -5,10 +5,6 @@ import 'react-quill/dist/quill.snow.css';
 
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
-// type DescriptionType = {
-//   content: string
-// } 
-
 const Description = () => {
   const [description, setDescription] = useState<string>('');
 
@@ -25,7 +21,6 @@ const Description = () => {
     ],
   };
 
-
   const quillFormats = [
     'header',
     'bold',
@@ -41,7 +36,6 @@ const Description = () => {
     'color',
     'code-block',
   ];
-
 
   const handleEditorChange = (content: SetStateAction<string>) => {
     setDescription(content);
