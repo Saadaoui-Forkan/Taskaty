@@ -34,7 +34,6 @@ const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
     const [from, setFrom] = useState(task.from);
     const [to, setTo] = useState(task.to);
     const [status, setStatus] = useState(task.status);
-    const [updateSuccess, setUpdateSuccess] = useState(false);
 
     const handleUpdateTask = async(e: FormEvent) => {
         e.preventDefault()
@@ -71,7 +70,7 @@ const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
                   },
                 }
               );
-              setUpdateSuccess(true)
+              setUpdateTaskModal(false)
               router.refresh();
         } catch (error) {
             const axiosError = error as AxiosError<ErrorResponse>;
@@ -99,13 +98,6 @@ const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
             setStatus(task.status || "")
         }
     }, [task]);
-
-    useEffect(() => {
-        if (updateSuccess) {
-          closeUpdateTaskModal(); 
-          setUpdateSuccess(false); 
-        }
-    }, [updateSuccess]);
     
     const openUpdateTaskModal = () => setUpdateTaskModal(true)
     const closeUpdateTaskModal = () => setUpdateTaskModal(false)
