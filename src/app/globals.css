@@ -12,6 +12,10 @@
   min-height: calc(100vh - 180px);
 }
 
+.fix-single-task-height {
+  min-height: calc(100vh - 50px);
+}
+
 .line-loader {
     @apply w-32 h-1 bg-blue-600 rounded; 
     position: relative; 

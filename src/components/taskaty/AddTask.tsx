@@ -154,7 +154,6 @@ const AddTask = ({ token }: AddTaskProps) => {
                 <select
                   name="status"
                   className="w-full p-3 border rounded-lg dark:bg-gray-700 dark:text-white"
-                  // value={status}
                   onChange={(e) => setStatus(e.target.value)}
                 >
                   <option value="NotStarted">{t("not_started")}</option>
