@@ -19,8 +19,7 @@ interface UpdateTaskProps {
 
 const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
     const t = useTranslations("Add Task");
-    const [isMounted, setIsMounted] = useState(false)
-    const [loading, setLoading] = useState(false);
+    const [updateTaskModal, setUpdateTaskModal] = useState(false)
     const context = useContext(AppContext);
     const router = useRouter();
 
@@ -28,40 +27,32 @@ const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
         throw new Error("AppContext must be used within an AppProvider");
     }
     const { alert, setAlert } = context;
-
-    // Handle open/close update modal
-    const [updateTaskModal, setUpdateTaskModal] = useState(false)
-    const openUpdateTaskModal = () => setUpdateTaskModal(true)
-    const closeUpdateTaskModal = () => setUpdateTaskModal(false)
-
+    
     // handle update modal
     const [title, setTitle] = useState(task.title);
     const [description, setDescription] = useState(task.description);
     const [from, setFrom] = useState(task.from);
     const [to, setTo] = useState(task.to);
     const [status, setStatus] = useState(task.status);
+    const [updateSuccess, setUpdateSuccess] = useState(false);
 
     const handleUpdateTask = async(e: FormEvent) => {
         e.preventDefault()
         // form validation
         if (title === "") {
             setAlert({ alertText: "Task title is required", type: "error" });
-            setLoading(false);
             return;
         }
         if (description === "") {
             setAlert({ alertText: "Task description is required", type: "error" });
-            setLoading(false);
             return;
         }
         if (to === null) {
             setAlert({ alertText: "To Date is required", type: "error" });
-            setLoading(false);
             return;
         }
         if (from === null) {
             setAlert({ alertText: "From Date is required", type: "error" });
-            setLoading(false);
             return;
         }
         try {
@@ -80,7 +71,7 @@ const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
                   },
                 }
               );
-              closeUpdateTaskModal()
+              setUpdateSuccess(true)
               router.refresh();
         } catch (error) {
             const axiosError = error as AxiosError<ErrorResponse>;
@@ -88,8 +79,6 @@ const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
             const errorMessage =
               axiosError.response?.data?.message || "An error occurred";
             setAlert({ alertText: errorMessage, type: "error" });
-        } finally {
-            setLoading(false);
         }
     }
 
@@ -102,7 +91,6 @@ const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
     }, [alert]);
 
     useEffect(() => {
-        setIsMounted(true);
         if (task) {
             setTitle(task.title || "")
             setDescription(task.description || "")
@@ -111,7 +99,16 @@ const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
             setStatus(task.status || "")
         }
     }, [task]);
-    if (!isMounted) return null;
+
+    useEffect(() => {
+        if (updateSuccess) {
+          closeUpdateTaskModal(); 
+          setUpdateSuccess(false); 
+        }
+    }, [updateSuccess]);
+    
+    const openUpdateTaskModal = () => setUpdateTaskModal(true)
+    const closeUpdateTaskModal = () => setUpdateTaskModal(false)
     return (
         <div className="relative">
 
