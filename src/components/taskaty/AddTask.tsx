@@ -9,6 +9,7 @@ import { ErrorResponse } from "@/utils/types";
 import { AppContext } from "@/context/AppContext";
 import { useRouter } from "next/navigation";
 import Toast from "../toast";
+import moment from "moment";
 
 type AddTaskProps = {
   token: string;
@@ -30,11 +31,11 @@ const AddTask = ({ token }: AddTaskProps) => {
   const handleOpenTaskModal = () => setOpenTaskModal(true);
 
   // Post New Task
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [from, setFrom] = useState("");
-  const [to, setTo] = useState("");
-  const [status, setStatus] = useState("NotStarted");
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [from, setFrom] = useState<Date | null>(null);
+  const [to, setTo] = useState<Date | null>(null);
+  const [status, setStatus] = useState<string>("NotStarted");
 
   const AddNewTask = async (e: FormEvent) => {
     e.preventDefault();
@@ -49,12 +50,12 @@ const AddTask = ({ token }: AddTaskProps) => {
       setLoading(false);
       return;
     }
-    if (to === "") {
+    if (to === null) {
       setAlert({ alertText: "To Date is required", type: "error" });
       setLoading(false);
       return;
     }
-    if (from === "") {
+    if (from === null) {
       setAlert({ alertText: "From Date is required", type: "error" });
       setLoading(false);
       return;
@@ -79,8 +80,8 @@ const AddTask = ({ token }: AddTaskProps) => {
       router.refresh();
       setTitle("")
       setDescription("")
-      setFrom("")
-      setTo("")
+      setFrom(null)
+      setTo(null)
       setLoading(false);
     } catch (error) {
       const axiosError = error as AxiosError<ErrorResponse>;
@@ -171,8 +172,8 @@ const AddTask = ({ token }: AddTaskProps) => {
                     type="date"
                     name="from"
                     className="w-full p-3 border rounded-lg dark:bg-gray-700 dark:text-white"
-                    value={from}
-                    onChange={(e) => setFrom(e.target.value)}
+                    value={from ? moment(from).format('YYYY-MM-DD') : ''}
+                    onChange={(e) => setFrom(new Date(e.target.value))}
                   />
                 </div>
 
@@ -184,8 +185,8 @@ const AddTask = ({ token }: AddTaskProps) => {
                     type="date"
                     name="to"
                     className="w-full p-3 border rounded-lg dark:bg-gray-700 dark:text-white"
-                    value={to}
-                    onChange={(e) => setTo(e.target.value)}
+                    value={to ? moment(to).format('YYYY-MM-DD') : ''}
+                    onChange={(e) => setTo(new Date(e.target.value))}
                   />
                 </div>
               </div>

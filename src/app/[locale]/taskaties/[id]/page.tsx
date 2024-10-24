@@ -1,8 +1,13 @@
 import { fetchSingleTask } from '@/apiCall/taskaties';
+import BackLink from '@/components/taskaty/BackLink';
+import DeleteBtn from '@/components/taskaty/DeleteBtn';
+import UpdateTask from '@/components/taskaty/UpdateTask';
 import { verifyTokenForClient } from '@/utils/verifyToken'
 import { Task } from '@prisma/client';
 import moment from 'moment';
+import { useTranslations } from 'next-intl';
 import { cookies } from 'next/headers'
+import Link from 'next/link';
 import { redirect } from 'next/navigation'
 
 interface SingleTaskProps {
@@ -15,14 +20,13 @@ const SingleTask = async({params}: SingleTaskProps) => {
     if (!payload) {
         redirect('/')
     }
-
+    
     const task: Task = await fetchSingleTask(token, parseInt(params.id))
-    // console.log(task)
     return (
         <div
             className="w-full p-6 bg-white dark:bg-gray-800 mx-auto py-6 fix-single-task-height"
         >
-
+            <BackLink/>
             <div className="flex flex-col items-start mb-6 border-b pb-4 border-gray-200 dark:border-gray-700 w-full px-2">
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white leading-tight">
                     {task.title}
@@ -57,18 +61,8 @@ const SingleTask = async({params}: SingleTaskProps) => {
             </div>
 
             <div className="flex justify-end gap-3 mt-4">
-                <button
-                    className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-md shadow-md 
-                            hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all"
-                >
-                    Update
-                </button>
-                <button
-                    className="px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md shadow-md 
-                            hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 transition-all"
-                >
-                    Delete
-                </button>
+                <UpdateTask task={task} id={parseInt(params.id)} token={token}/>
+                <DeleteBtn/>
             </div>
         </div>
     )

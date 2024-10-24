@@ -46,6 +46,9 @@
         "from": "From",
         "to": "To",
         "add_task": "Add Task",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "update": "Update Task",
+        "back": "Back to taskaties",
+        "delete": "Delete"
     }
 }
