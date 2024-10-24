@@ -62,7 +62,7 @@ const SingleTask = async({params}: SingleTaskProps) => {
 
             <div className="flex justify-end gap-3 mt-4">
                 <UpdateTask task={task} id={parseInt(params.id)} token={token}/>
-                <DeleteBtn/>
+                <DeleteBtn task={task} id={parseInt(params.id)} token={token}/>
             </div>
         </div>
     )

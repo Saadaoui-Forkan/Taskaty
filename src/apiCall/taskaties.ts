@@ -31,6 +31,6 @@ export async function fetchSingleTask(token: string, id:number): Promise<Task> {
         throw new Error(`Failed To Fetch Task: ${id}`)
     }
 
-    const singleTask = res.json()
+    const singleTask = await res.json()
     return singleTask
 }
