@@ -19,10 +19,11 @@ const Taskaty = async({searchParams}: TasksPageProps) => {
   } 
 
   const data = await fetchTasks(token, pageNumber)
+  const pages = Math.ceil(data.count/3)
   return (
     <div className="dark:bg-dustyGray">
       <Navbar payload = {payload}/>
-      <Tasks tasks={data.tasks} token={token}/>
+      <Tasks tasks={data.tasks} token={token} pageNumber={parseInt(pageNumber)} pages={pages}/>
     </div>
   );
 };

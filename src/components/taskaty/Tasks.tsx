@@ -5,13 +5,16 @@ import FilterBtn from "./FilterBtn";
 import { useTranslations } from "next-intl";
 import { Task } from "@prisma/client";
 import AddTask from "./AddTask";
+import Pagination from "../pagination";
 
 interface TasksProps {
   tasks: Task[],
-  token: string
+  token: string,
+  pages: number,
+  pageNumber: number
 }
 
-const Tasks = ({tasks, token}: TasksProps) => {
+const Tasks = ({tasks, token, pages, pageNumber}: TasksProps) => {
   const t = useTranslations("Tasks");
   return (
     <div className="fix-height">
@@ -69,6 +72,7 @@ const Tasks = ({tasks, token}: TasksProps) => {
           ))}
         </div>
       </div>
+      <Pagination route="/taskaties" pageNumber={pageNumber} pages={pages}/>
     </div>
   );
 };
