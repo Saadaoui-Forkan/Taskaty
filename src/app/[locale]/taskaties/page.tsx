@@ -6,18 +6,23 @@ import { Task } from "@prisma/client";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const Taskaty = async() => {
+interface TasksPageProps {
+  searchParams: { pageNumber: string }
+}
+
+const Taskaty = async({searchParams}: TasksPageProps) => {
+  const {pageNumber} = searchParams
   const token = cookies().get("jwtToken")?.value || ""
   const payload = verifyTokenForClient(token) 
   if (!token) {
     redirect('/')
   } 
 
-  const tasks: Task[] = await fetchTasks(token)
+  const data = await fetchTasks(token, pageNumber)
   return (
     <div className="dark:bg-dustyGray">
       <Navbar payload = {payload}/>
-      <Tasks tasks={tasks} token={token}/>
+      <Tasks tasks={data.tasks} token={token}/>
     </div>
   );
 };

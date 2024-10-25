@@ -12,14 +12,25 @@ import { NextRequest, NextResponse } from "next/server";
 */
 export async function GET (request: NextRequest) {
     try {
+        const TASKS_PER_PAGE = 3
+        // count number of tasks
+        const count = await prisma.task.count()
+
         const user = verifyToken(request)
         if (!user) {
             return NextResponse.json({message: "Access Denied!"}, {status: 401})
         }
 
-        const tasks = await prisma.task.findMany()
+        const pageNumber = request.nextUrl.searchParams.get('pageNumber') || '1'
 
-        return NextResponse.json(tasks, {status: 201})
+        const tasks = await prisma.task.findMany({
+            skip: TASKS_PER_PAGE * (parseInt(pageNumber) - 1),
+            take: TASKS_PER_PAGE,
+            orderBy: {
+                createdAt: 'desc'
+            }
+        })
+        return NextResponse.json({tasks, count}, {status: 201})
     } catch (error) {
         console.error("Error: ", error)
         return NextResponse.json({
