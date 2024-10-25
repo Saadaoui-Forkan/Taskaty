@@ -1,6 +1,7 @@
 import { fetchTasks } from "@/apiCall/taskaties";
 import Navbar from "@/components/taskaty/Navbar";
 import Tasks from "@/components/taskaty/Tasks";
+import { TASKS_PER_PAGE } from "@/utils/constants";
 import { verifyTokenForClient } from "@/utils/verifyToken";
 import { Task } from "@prisma/client";
 import { cookies } from "next/headers";
@@ -19,7 +20,7 @@ const Taskaty = async({searchParams}: TasksPageProps) => {
   } 
 
   const data = await fetchTasks(token, pageNumber)
-  const pages = Math.ceil(data.count/3)
+  const pages = Math.ceil(data.count/TASKS_PER_PAGE)
   return (
     <div className="dark:bg-dustyGray">
       <Navbar payload = {payload}/>

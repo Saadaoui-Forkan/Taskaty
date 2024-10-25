@@ -1,3 +1,4 @@
+import { TASKS_PER_PAGE } from "@/utils/constants";
 import prisma from "@/utils/db";
 import { CreateTaskDTO } from "@/utils/dtos";
 import { createTaskSchema } from "@/utils/validationsSchema";
@@ -12,8 +13,6 @@ import { NextRequest, NextResponse } from "next/server";
 */
 export async function GET (request: NextRequest) {
     try {
-        const TASKS_PER_PAGE = 3
-        // count number of tasks
         const count = await prisma.task.count()
 
         const user = verifyToken(request)
