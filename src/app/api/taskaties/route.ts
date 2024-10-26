@@ -20,10 +20,12 @@ export async function GET (request: NextRequest) {
             return NextResponse.json({message: "Access Denied!"}, {status: 401})
         }
 
-        const pageNumber = request.nextUrl.searchParams.get('pageNumber') || '1'
-
+        let pageNumber = parseInt(request.nextUrl.searchParams.get('pageNumber') || '1')
+        if (isNaN(pageNumber) || pageNumber < 1) {
+            pageNumber = 1; 
+        }
         const tasks = await prisma.task.findMany({
-            skip: TASKS_PER_PAGE * (parseInt(pageNumber) - 1),
+            skip: TASKS_PER_PAGE * (pageNumber - 1),
             take: TASKS_PER_PAGE,
             orderBy: {
                 createdAt: 'desc'
