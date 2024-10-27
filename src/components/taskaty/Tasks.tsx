@@ -18,7 +18,7 @@ const Tasks = ({tasks, token, pages, pageNumber}: TasksProps) => {
   const t = useTranslations("Tasks");
   return (
     <div className="fix-height">
-      <FilterBtn token={token}/>
+      <FilterBtn/>
       <AddTask token={token}/>
       <div className="mx-auto mt-14">
         <div className="w-10/12 md:w-4/5 mx-auto text-sm md:text-lg">
@@ -72,7 +72,7 @@ const Tasks = ({tasks, token, pages, pageNumber}: TasksProps) => {
           ))}
         </div>
       </div>
-      <Pagination route="/taskaties" pageNumber={pageNumber} pages={pages}/>
+      {pages > 1 && <Pagination route="/taskaties" pageNumber={pageNumber} pages={pages}/>}
     </div>
   );
 };

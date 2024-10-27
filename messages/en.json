@@ -74,5 +74,11 @@
         "from": "From: ",
         "to": "To: ",
         "viewDetails": "View Details"
+    },
+    "Single Task": {
+        "createdAt": "Created At:",
+        "lastUpdate": "Last Update:",
+        "from": "From:",
+        "to": "To:"
     }
 }

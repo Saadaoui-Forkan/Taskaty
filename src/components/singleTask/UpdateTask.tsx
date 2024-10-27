@@ -1,7 +1,7 @@
 'use client'
 import { useTranslations } from 'next-intl';
 import { FormEvent, useContext, useEffect, useState } from 'react';
-import Description from './Description';
+import Description from '../taskaty/Description';
 import { IoIosClose } from 'react-icons/io';
 import { Task } from '@prisma/client';
 import moment from 'moment';
@@ -88,16 +88,6 @@ const UpdateTask = ({ task, id, token }: UpdateTaskProps) => {
           }, 5000);
         }
     }, [alert]);
-
-    useEffect(() => {
-        if (task) {
-            setTitle(task.title || "")
-            setDescription(task.description || "")
-            setFrom(task.from || null);
-            setTo(task.to || null);
-            setStatus(task.status || "")
-        }
-    }, [task]);
     
     const openUpdateTaskModal = () => setUpdateTaskModal(true)
     const closeUpdateTaskModal = () => setUpdateTaskModal(false)
