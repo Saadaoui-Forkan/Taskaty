@@ -12,7 +12,11 @@
         "last_name": "Nom de famille",
         "required": "Champ Obligatoire",
         "user_already_exists": "L'utilisateur existe déjà",
-        "internal_server_error": "Erreur interne du serveur"
+        "internal_server_error": "Erreur interne du serveur",
+        "required_first_name": "Le prénom est requis",
+        "required_last_name": "Le nom de famille est requis",
+        "required_email": "L'email est requis",
+        "required_password": "Le mot de passe est requis"
     },
     "NotFound": {
         "title": "Oups ! Page non trouvée",

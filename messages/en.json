@@ -10,9 +10,12 @@
         "password": "Password",
         "first_name": "First Name",
         "last_name": "Last Name",
-        "required": "Required Field",
         "user_already_exists": "User already exists",
-        "internal_server_error": "Internal server error"
+        "internal_server_error": "Internal server error",
+        "required_first_name": "First Name is required",
+        "required_last_name": "Last Name is required",
+        "required_email": "Email is required",
+        "required_password": "Password is required"
     },
     "NotFound": {
         "title": "Oops! Page not found",

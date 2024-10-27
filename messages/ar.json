@@ -12,7 +12,11 @@
         "last_name": "اسم العائلة",
         "required": "حقل إلزامي",
         "user_already_exists": "هذا المستخدم مسجل مسبقا",
-        "internal_server_error": "خطأ من الخادم"
+        "internal_server_error": "خطأ من الخادم",
+        "required_first_name": "الاسم الأول مطلوب",
+        "required_last_name": "اسم العائلة مطلوب",
+        "required_email": "البريد الإلكتروني مطلوب",
+        "required_password": "كلمة المرور مطلوبة"
     },
     "NotFound": {
         "title": "عذرًا! الصفحة غير موجودة",

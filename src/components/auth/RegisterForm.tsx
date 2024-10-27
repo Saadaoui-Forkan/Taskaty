@@ -28,22 +28,22 @@ const RegisterForm = () => {
     setLoading(true);
     // Validation
     if (first_name === "") {
-      setAlert({ alertText: "First Name is required", type: "error" });
+      setAlert({ alertText: t('required_first_name'), type: "error" });
       setLoading(false);
       return;
     }
     if (last_name === "") {
-      setAlert({ alertText: "Last Name is required", type: "error" });
+      setAlert({ alertText: t('required_last_name'), type: "error" });
       setLoading(false);
       return;
     }
     if (email === "") {
-      setAlert({ alertText: "Email is required", type: "error" });
+      setAlert({ alertText: t('required_email'), type: "error" });
       setLoading(false);
       return;
     }
     if (password === "") {
-      setAlert({ alertText: "Password is required", type: "error" });
+      setAlert({ alertText: t('required_password'), type: "error" });
       setLoading(false);
       return;
     }
