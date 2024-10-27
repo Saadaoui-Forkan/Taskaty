@@ -25,7 +25,8 @@
         "light": "نهاري"
     },
     "Logout": {
-        "logout": "تسجيل الخروج"
+        "logout": "تسجيل الخروج",
+        "wrong": "حدث خطأ ما"
     },
     "Tasks": {
         "taskaty": "تاسكاتي",
@@ -49,7 +50,12 @@
         "cancel": "إلغاء",
         "update": "تعديل المهمة",
         "back": "العودة إلى تسكاتي",
-        "delete": "حذف"
+        "delete": "حذف",
+        "add_task_successfully": "تمت إضافة المهمة بنجاح",
+        "required_title": "عنوان المهمة مطلوب",
+        "required_description": "وصف المهمة مطلوب",
+        "required_from": "تاريخ البداية مطلوب",
+        "required_to": "تاريخ النهاية مطلوب"
     },
     "Filters": {
         "filters": "إختيار متقدم",

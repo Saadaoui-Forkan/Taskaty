@@ -25,7 +25,8 @@
         "light": "nuit"
     },
     "Logout": {
-        "logout": "Deconnexion"
+        "logout": "Deconnexion",
+        "wrong": "Quelque chose s'est mal passé"
     },
     "Tasks": {
         "taskaty": "Taskaty",
@@ -49,7 +50,12 @@
         "cancel": "Annuler",
         "update": "Modifier Task",
         "back": "Retour vers taskaties",
-        "delete": "Supprimer"
+        "delete": "Supprimer",
+        "add_task_successfully": "Tâche ajoutée avec succès",
+        "required_title": "Le titre de la tâche est requis",
+        "required_description": "La description de la tâche est requise",
+        "required_from": "La date de début est requise",
+        "required_to": "La date de fin est requise"
     },
     "Filters": {
         "filters": "Filtres",

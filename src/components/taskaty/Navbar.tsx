@@ -1,14 +1,24 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { FiBell } from "react-icons/fi";
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { JWTPayload } from "@/utils/types";
+import { useRouter } from "next/navigation";
+import { AppContext } from "@/context/AppContext";
+import axios from "axios";
 
 interface NavBarProps {
   payload: JWTPayload | null
 }
 
 const Navbar = ({payload}: NavBarProps) => {
+  const context = useContext(AppContext);
+  const router = useRouter();
+
+  if (!context) {
+    throw new Error("AppContext must be used within an AppProvider");
+  }
+  const { alert, setAlert } = context;
   const t = useTranslations("Logout");
 
   const [direction, setDirection] = useState<"ltr" | "rtl">("ltr");
@@ -18,6 +28,15 @@ const Navbar = ({payload}: NavBarProps) => {
     setDirection(htmlDir as "ltr" | "rtl");
   }, []);
 
+  const handleLogout = async() => {
+    try {
+      await axios.get(`${process.env.NEXT_PUBLIC_AUTH_API_DOMAIN}/logout`)
+      router.push('/')
+      router.refresh()
+    } catch (error) {
+      setAlert({ alertText: t('wrong'), type: "warning" })
+    }
+  }
   return (
     <nav
       className={`bg-gray-100 dark:bg-dustyGray p-4 flex justify-between items-center flex-wrap shadow-md`}
@@ -50,6 +69,7 @@ const Navbar = ({payload}: NavBarProps) => {
             {payload?.first_name}
           </h1>
           <button
+            onClick={handleLogout}
             className="text-blue-600 dark:text-blue-400 hover:underline transition-all mx-2"
           >
             {t("logout")}

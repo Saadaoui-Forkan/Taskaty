@@ -25,7 +25,8 @@
         "light": "light"
     },
     "Logout": {
-        "logout": "Logout"
+        "logout": "Logout",
+        "wrong": "Something Went Wrong"
     },
     "Tasks": {
         "taskaty": "Taskaty",
@@ -49,7 +50,12 @@
         "cancel": "Cancel",
         "update": "Update Task",
         "back": "Back to taskaties",
-        "delete": "Delete"
+        "delete": "Delete",
+        "add_task_successfully": "Task Added Successfully",
+        "required_title": "Task Title is required",
+        "required_description": "Task description is required",
+        "required_from": "From Date is required",
+        "required_to": "To Date is required"
     },
     "Filters":
     {

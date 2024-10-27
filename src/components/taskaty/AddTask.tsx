@@ -41,22 +41,22 @@ const AddTask = ({ token }: AddTaskProps) => {
     e.preventDefault();
     // inputs validation
     if (title === "") {
-      setAlert({ alertText: "Task title is required", type: "error" });
+      setAlert({ alertText: t('required_title'), type: "error" });
       setLoading(false);
       return;
     }
     if (description === "") {
-      setAlert({ alertText: "Task description is required", type: "error" });
+      setAlert({ alertText: t("required_description"), type: "error" });
       setLoading(false);
       return;
     }
     if (to === null) {
-      setAlert({ alertText: "To Date is required", type: "error" });
+      setAlert({ alertText: t('required_to'), type: "error" });
       setLoading(false);
       return;
     }
     if (from === null) {
-      setAlert({ alertText: "From Date is required", type: "error" });
+      setAlert({ alertText: t('required_from'), type: "error" });
       setLoading(false);
       return;
     }
@@ -76,7 +76,7 @@ const AddTask = ({ token }: AddTaskProps) => {
           },
         }
       );
-      setAlert({ alertText: "Task Created Successfully", type: "success" });
+      setAlert({ alertText: t('add_task_successfully'), type: "success" });
       router.refresh();
       setTitle("")
       setDescription("")
