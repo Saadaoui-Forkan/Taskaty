@@ -50,5 +50,28 @@
         "update": "تعديل المهمة",
         "back": "العودة إلى تسكاتي",
         "delete": "حذف"
-    }
+    },
+    "Filters": {
+        "filters": "إختيار متقدم",
+        "select_status": "اختر الحالة",
+        "statuses": {
+            "not_started": "لم يبدأ",
+            "in_progress": "قيد التنفيذ",
+            "completed": "مكتمل"
+        },
+        "date_range": "نطاق التاريخ",
+        "from": "البداية:",
+        "to": "النهاية:",
+        "filter_tasks": "إبدأ الفلترة"
+    },
+    "Filter Results": {
+        "noResultsFound": "لم يتم العثور على نتائج لهذا الفلتر",
+        "trySearching": "حاول البحث بكلمة مختلفة.",
+        "backToArticles": "العودة إلى المقالات",
+        "searchResultsFor": "نتائج البحث عن:",
+        "taskStatus": "حالة المهمة: ",
+        "from": "من: ",
+        "to": "إلى: ",
+        "viewDetails": "عرض التفاصيل"
+      }
 }

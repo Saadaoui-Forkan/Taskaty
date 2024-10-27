@@ -50,5 +50,28 @@
         "update": "Modifier Task",
         "back": "Retour vers taskaties",
         "delete": "Supprimer"
+    },
+    "Filters": {
+        "filters": "Filtres",
+        "select_status": "Sélectionner un statut",
+        "statuses": {
+          "not_started": "Non commencé",
+          "in_progress": "En cours",
+          "completed": "Terminé"
+        },
+        "date_range": "Plage de dates",
+        "from": "Debut :",
+        "to": "Fin :",
+        "filter_tasks": "Filtrer"
+    },
+    "Filter Results": {
+        "noResultsFound": "Aucun résultat trouvé pour ce filtre",
+        "trySearching": "Essayez de chercher avec un mot-clé différent.",
+        "backToArticles": "Retour aux articles",
+        "searchResultsFor": "Les résultats de recherche pour :",
+        "taskStatus": "Statut de la tâche : ",
+        "from": "De : ",
+        "to": "À : ",
+        "viewDetails": "Voir les détails"
     }
 }

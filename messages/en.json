@@ -50,5 +50,29 @@
         "update": "Update Task",
         "back": "Back to taskaties",
         "delete": "Delete"
+    },
+    "Filters":
+    {
+        "filters": "Filters",
+        "select_status": "Select Status",
+        "statuses": {
+          "not_started": "Not Started",
+          "in_progress": "In Progress",
+          "completed": "Completed"
+        },
+        "date_range": "Date Range",
+        "from": "From:",
+        "to": "To:",
+        "filter_tasks": "Filter Tasks"
+    },
+    "Filter Results": {
+        "noResultsFound": "No results found for this filter",
+        "trySearching": "Try searching with a different keyword.",
+        "backToArticles": "Back to articles",
+        "searchResultsFor": "The search results for:",
+        "taskStatus": "Task Status: ",
+        "from": "From: ",
+        "to": "To: ",
+        "viewDetails": "View Details"
     }
 }

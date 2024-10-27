@@ -2,13 +2,14 @@
 import { AppContext } from "@/context/AppContext";
 import { ErrorResponse } from "@/utils/types";
 import axios, { AxiosError } from "axios";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import Toast from "../toast";
 
 const LoginForm = () => {
   const t = useTranslations('Auth')
+  const locale = useLocale();
   const router = useRouter()
   const context = useContext(AppContext);
   const [email, setEmail] = useState("");
@@ -28,7 +29,7 @@ const LoginForm = () => {
         email,
         password,
       });
-      router.replace("/taskaties");
+      router.push(`${locale}/taskaties`);
       setLoading(false);
       router.refresh();
     } catch (error) {

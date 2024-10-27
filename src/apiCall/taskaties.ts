@@ -8,7 +8,7 @@ export async function fetchTasks(
   token: string,
   pageNumber: string | undefined
 ): Promise<FetchTasksType> {
-    const validPage = parseInt(pageNumber || '1');
+  const validPage = parseInt(pageNumber || "1");
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_DOMAIN}/taskaties?pageNumber=${
       isNaN(validPage) ? 1 : validPage
@@ -47,4 +47,29 @@ export async function fetchSingleTask(
 
   const singleTask = await res.json();
   return singleTask;
+}
+
+// Fetch Tasks By Multiple Filters
+export async function fetchTasksByFilters(
+  token: string,
+  status?: string,
+  from?: string,
+  to?: string
+): Promise<Task[]> {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_DOMAIN}/taskaties/filter?status=${status ? status : ""}&from=${from ? from : ""}&to=${to ? to : ""}`,
+    {
+      headers: {
+        Cookie: `jwtToken=${token}`,
+      },
+      cache: "no-store",
+    }
+  );
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch tasks");
+  }
+
+  const data = await response.json();
+  return data.tasks;
 }

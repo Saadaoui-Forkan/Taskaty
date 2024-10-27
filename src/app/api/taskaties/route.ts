@@ -13,7 +13,6 @@ import { NextRequest, NextResponse } from "next/server";
 */
 export async function GET (request: NextRequest) {
     try {
-        const count = await prisma.task.count()
 
         const user = verifyToken(request)
         if (!user) {
@@ -24,7 +23,11 @@ export async function GET (request: NextRequest) {
         if (isNaN(pageNumber) || pageNumber < 1) {
             pageNumber = 1; 
         }
+        const count = await prisma.task.count({
+            where: {userId: user.id}
+        })
         const tasks = await prisma.task.findMany({
+            where: { userId: user.id },
             skip: TASKS_PER_PAGE * (pageNumber - 1),
             take: TASKS_PER_PAGE,
             orderBy: {

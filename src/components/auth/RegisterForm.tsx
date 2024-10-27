@@ -1,5 +1,5 @@
 "use client";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import React, { FormEvent, useContext, useEffect, useState } from "react";
 import Toast from "../toast";
 import { AppContext } from "@/context/AppContext";
@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
   const t = useTranslations("Auth");
+  const locale = useLocale()
   const router = useRouter();
   const context = useContext(AppContext);
   const [first_name, setFirst_name] = useState("");
@@ -54,7 +55,7 @@ const RegisterForm = () => {
         email,
         password,
       });
-      router.replace("/taskaties");
+      router.push(`${locale}/taskaties`);
       setUsername(first_name)
       setLoading(false);
       router.refresh();

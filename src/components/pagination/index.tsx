@@ -20,7 +20,7 @@ const Pagination = ({ pages, pageNumber, route }: PaginationProps) => {
                     href={`${route}?pageNumber=${prev}`}
                     className="mx-1 py-1 px-3 md:px-4 border rounded-l-lg shadow-md cursor-pointer text-sm md:text-base transition
                  bg-white text-slateGray hover:bg-coralRed hover:text-white
-                 dark:bg-coolGray dark:text-white dark:hover:bg-dustyGray"
+                 dark:bg-slateGray dark:text-white dark:hover:bg-dustyGray"
                 >
                     Prev
                 </Link>
@@ -32,7 +32,7 @@ const Pagination = ({ pages, pageNumber, route }: PaginationProps) => {
                         href={`${route}?pageNumber=1`}
                         className="mx-1 py-1 px-3 md:px-4 border rounded-md shadow-md cursor-pointer text-sm md:text-base transition
                    bg-white text-slateGray hover:bg-coralRed hover:text-white
-                   dark:bg-coolGray dark:text-white dark:hover:bg-dustyGray"
+                   dark:bg-slateGray dark:text-white dark:hover:bg-dustyGray"
                     >
                         1
                     </Link>
@@ -47,7 +47,7 @@ const Pagination = ({ pages, pageNumber, route }: PaginationProps) => {
                     className={`mx-1 py-1 px-3 md:px-4 border rounded-md shadow-md cursor-pointer text-sm md:text-base transition
                                     ${pageNumber === page
                             ? "bg-coralRed text-white"
-                            : "bg-white text-slateGray dark:bg-coolGray dark:text-white"
+                            : "bg-white text-slateGray dark:bg-slateGray dark:text-white"
                         }
                                     hover:bg-coralRed hover:text-white dark:hover:bg-dustyGray`}
                 >
@@ -62,7 +62,7 @@ const Pagination = ({ pages, pageNumber, route }: PaginationProps) => {
                         href={`${route}?pageNumber=${pages}`}
                         className="mx-1 py-1 px-3 md:px-4 border rounded-md shadow-md cursor-pointer text-sm md:text-base transition
                    bg-white text-slateGray hover:bg-coralRed hover:text-white
-                   dark:bg-coolGray dark:text-white dark:hover:bg-dustyGray"
+                   dark:bg-slateGray dark:text-white dark:hover:bg-dustyGray"
                     >
                         {pages}
                     </Link>
@@ -74,7 +74,7 @@ const Pagination = ({ pages, pageNumber, route }: PaginationProps) => {
                     href={`${route}?pageNumber=${next}`}
                     className="mx-1 py-1 px-3 md:px-4 border rounded-r-lg shadow-md cursor-pointer text-sm md:text-base transition
                                 bg-white text-slateGray hover:bg-coralRed hover:text-white
-                                dark:bg-coolGray dark:text-white dark:hover:bg-dustyGray"
+                                dark:bg-slateGray dark:text-white dark:hover:bg-dustyGray"
                 >
                     Next
                 </Link>
