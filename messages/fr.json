@@ -1,6 +1,6 @@
 {
     "Home": {
-        "intro": "C'est votre application de liste de tâches personnelle pour gérer, organiser et suivre vos notes facilement. Simplifiez vos tâches quotidiennes avec une interface claire et intuitive.",
+        "intro": "Votre application de liste de tâches personnelle pour gérer, organiser et suivre vos notes facilement. Simplifiez vos tâches quotidiennes avec une interface claire et intuitive.",
         "start": "Commencer"
     },
     "Auth": {
@@ -16,7 +16,10 @@
         "required_first_name": "Le prénom est requis",
         "required_last_name": "Le nom de famille est requis",
         "required_email": "L'email est requis",
-        "required_password": "Le mot de passe est requis"
+        "required_password": "Le mot de passe est requis",
+        "dontHaveAccount": "Vous n'avez pas de compte ?",
+        "welcome_message": "Bienvenue sur Taskaty ! Nous sommes heureux de vous accueillir.",
+        "alreadyHaveAccount": "Vous avez déjà un compte ?"
     },
     "NotFound": {
         "title": "Oups ! Page non trouvée",

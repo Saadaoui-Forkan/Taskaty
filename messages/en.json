@@ -1,6 +1,6 @@
 {
     "Home": {
-        "intro": "Is your personal to-do list app to easily manage, organize, and track your notes. Simplify your daily tasks with a clean and intuitive interface.",
+        "intro": "Your personal to-do list app to easily manage, organize, and track your notes. Simplify your daily tasks with a clean and intuitive interface.",
         "start": "Get Started"
     },
     "Auth": {
@@ -15,7 +15,11 @@
         "required_first_name": "First Name is required",
         "required_last_name": "Last Name is required",
         "required_email": "Email is required",
-        "required_password": "Password is required"
+        "required_password": "Password is required",
+        "required": "Required Field",
+        "dontHaveAccount": "Don't have an account?",
+        "welcome_message": "Welcome to Taskaty! We are excited to have you join us.",
+        "alreadyHaveAccount": "Already have an account?"
     },
     "NotFound": {
         "title": "Oops! Page not found",
