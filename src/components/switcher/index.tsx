@@ -37,9 +37,9 @@ const Switcher = () => {
       <div className="relative">
         <div
           onClick={toggleDropdown}
-          className="flex items-center justify-center p-3 bg-coolGray dark:bg-gray-800 
-                 text-rubyRed dark:text-white rounded-full shadow-lg cursor-pointer 
-                 hover:bg-gray-300 dark:hover:bg-gray-700 transition-all duration-300"
+          className="flex items-center justify-center p-3 bg-gray-100 dark:bg-gray-700 
+                 text-bold text-gray-800 dark:text-white rounded-full shadow-lg cursor-pointer 
+                 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all duration-300"
         >
           <CiSettings className="text-2xl" />
         </div>

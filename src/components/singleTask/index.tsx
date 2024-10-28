@@ -1,8 +1,9 @@
 "use client"
 import { Task } from '@prisma/client'
 import moment from 'moment'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
+import DOMPurify from 'dompurify';
 
 interface TaskDetailsProps {
     task: Task
@@ -10,6 +11,8 @@ interface TaskDetailsProps {
 
 const TaskDetails = ({ task }: TaskDetailsProps) => {
     const t = useTranslations("Single Task");
+    const locale = useLocale()
+    const direction = locale === 'ar' ? 'rtl' : 'ltr'
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
@@ -38,11 +41,10 @@ const TaskDetails = ({ task }: TaskDetailsProps) => {
                 </div>
             </div>
             <p
-                className="mb-6 text-gray-700 dark:text-gray-300 text-justify"
-                dangerouslySetInnerHTML={{ __html: task.description }}
-            >
-                {/* {task.description} */}
-            </p>
+                className="mb-6 text-gray-700 dark:text-gray-300 text-justify ql-editor"
+                dir={direction}
+                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(task.description) }}
+            />
             <div className='border-b pb-4 border-gray-200 dark:border-gray-700'></div>
 
             <div className="flex justify-around mb-6 text-md text-gray-500 dark:text-gray-400 pt-4">

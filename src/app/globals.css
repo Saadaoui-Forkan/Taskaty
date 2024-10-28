@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  @apply transition-colors duration-300
+  @apply transition-colors duration-300;
 }
 
 .fix-height {
@@ -17,81 +17,212 @@
 }
 
 .line-loader {
-    @apply w-32 h-1 bg-blue-600 rounded; 
-    position: relative; 
-    overflow: hidden; 
-  }
-  
-  .line-loader:before {
-    content: '';
-    @apply absolute left-0 top-0 h-full bg-blue-300; 
-    animation: loading 1.5s infinite; 
-    width: 100%; 
-  }
-  
-  @keyframes loading {
-    0% {
-      transform: translateX(-100%); 
-    }
-    50% {
-      transform: translateX(0); 
-    }
-    100% {
-      transform: translateX(100%); 
-    }
-  }
+  @apply w-32 h-1 bg-blue-600 rounded;
+  position: relative;
+  overflow: hidden;
+}
 
-  /* Animated Toast */
-  @keyframes slideIn {
-    0% {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes progressBar {
-    0% {
-      transform: scaleX(0);
-    }
-    100% {
-      transform: scaleX(1);
-    }
-  }
-  
-  .animate-slide-in {
-    animation: slideIn 0.3s ease-in-out;
-  }
-  
-  .animate-progress-bar {
-    animation: progressBar 4s linear forwards;
-    transform-origin: left; 
-  }
+.line-loader:before {
+  content: "";
+  @apply absolute left-0 top-0 h-full bg-blue-300;
+  animation: loading 1.5s infinite;
+  width: 100%;
+}
 
-  /* Custom Scroll Bar */
-  * {
-    scrollbar-width: thin; 
-    scrollbar-color: #595f68 #e2e8f0; 
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
   }
-  
-  /* Chrome, Safari & Edge */
-  ::-webkit-scrollbar {
-    width: 8px; 
+  50% {
+    transform: translateX(0);
   }
-  
-  ::-webkit-scrollbar-track {
-    background: #e2e8f0; 
+  100% {
+    transform: translateX(100%);
   }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: #595f68; 
-    border-radius: 10px; 
+}
+
+/* Animated Toast */
+@keyframes slideIn {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
   }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #7b7777; 
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
+}
+
+@keyframes progressBar {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.animate-progress-bar {
+  animation: progressBar 4s linear forwards;
+  transform-origin: left;
+}
+
+/* Custom Scroll Bar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #595f68 #e2e8f0;
+}
+
+/* Chrome, Safari & Edge */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #595f68;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #7b7777;
+}
+
+/* text editor style */
+.ql-editor {
+  line-height: 1.6;
+  font-size: 1.2rem;
+  color: #333;
+  text-align: left;
+}
+
+/* Gestion RTL */
+[dir="rtl"] .ql-editor {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Listes ordonnées/non ordonnées */
+.ql-editor ol {
+  list-style-position: outside; /* Numéros à l'extérieur */
+  padding-left: 2rem; /* Espacement pour LTR */
+  margin: 0.5rem 0;
+}
+
+[dir="rtl"] .ql-editor ol {
+  padding-right: 2rem; /* Espacement pour RTL */
+  padding-left: 1rem;
+}
+
+/* Alignement des numéros avec le texte */
+.ql-editor ol li {
+  position: relative;
+  margin-bottom: 0.5rem; /* Espacement entre les items */
+  padding-left: 1rem; /* LTR */
+}
+
+[dir="rtl"] .ql-editor ol li {
+  padding-left: 0;
+  padding-right: 1rem; /* RTL */
+}
+
+/* Style du numéro (avant chaque <li>) */
+.ql-editor ol li::marker {
+  font-weight: bold; /* Met en gras les numéros */
+  font-size: 1rem;
+  color: #3490dc; /* Couleur personnalisée */
+  padding-left: 1rem; 
+}
+
+/* Alternative : Pour plus de contrôle, utiliser ::before */
+.ql-editor ol li::before {
+  content: counters(item, ".") " "; /* 1. / 1.1. / 1.2. */
+  counter-increment: item;
+  position: absolute;
+  left: 0; /* Position LTR */
+  color: #3490dc;
+}
+
+[dir="rtl"] .ql-editor ol li::before {
+  right: 0; /* Position RTL */
+  left: auto;
+}
+
+/* Alignements */
+.ql-editor .ql-align-center {
+  text-align: center;
+}
+
+.ql-editor .ql-align-right {
+  text-align: right;
+}
+
+/* Blockquote Styling */
+.ql-editor blockquote {
+  border-left: 4px solid #3490dc;
+  margin: 1.5em 0;
+  padding: 15px 20px!important; /* Ajout de padding */
+  font-style: italic;
+  color: #2e3440;
+  background-color: #d8dee9;
+  border-radius: 0 4px 4px 0;
+}
+
+/* Blockquote RTL */
+[dir="rtl"] .ql-editor blockquote {
+  border-left: none;
+  border-right: 4px solid #3490dc;
+  border-radius: 4px 0 0 4px;
+}
+
+/* Bloc de Code (pre) */
+.ql-editor pre {
+  color: #2e3440; 
+  background-color: #d8dee9;
+  padding: 1rem!important; 
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  direction: ltr; 
+  text-align: left; 
+}
+
+/* Code Inline Styling */
+.ql-editor code {
+  background-color: #f4f4f4;
+  color: #c7254e;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.85rem;
+  margin: 0 0.1rem;
+  direction: ltr; /* Toujours LTR */
+}
+
+/* Gestion RTL pour pre */
+[dir="rtl"] .ql-editor pre {
+  text-align: left; 
+  direction: ltr;
+}
+
+/* Barre de défilement personnalisée */
+.ql-editor pre::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ql-editor pre::-webkit-scrollbar-thumb {
+  background-color: #4c566a;
+  border-radius: 4px;
+}
