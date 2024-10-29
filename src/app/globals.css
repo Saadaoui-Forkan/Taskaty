@@ -103,50 +103,45 @@
   text-align: left;
 }
 
-/* Gestion RTL */
 [dir="rtl"] .ql-editor {
   text-align: right;
   direction: rtl;
 }
 
-/* Listes ordonnées/non ordonnées */
 .ql-editor ol {
-  list-style-position: outside; /* Numéros à l'extérieur */
-  padding-left: 2rem; /* Espacement pour LTR */
+  list-style-position: outside; 
+  padding-left: 2rem; 
   margin: 0.5rem 0;
 }
 
 [dir="rtl"] .ql-editor ol {
-  padding-right: 2rem; /* Espacement pour RTL */
+  padding-right: 2rem; 
   padding-left: 1rem;
 }
 
-/* Alignement des numéros avec le texte */
 .ql-editor ol li {
   position: relative;
-  margin-bottom: 0.5rem; /* Espacement entre les items */
-  padding-left: 1rem; /* LTR */
+  margin-bottom: 0.5rem; 
+  padding-left: 1rem; 
 }
 
 [dir="rtl"] .ql-editor ol li {
   padding-left: 0;
-  padding-right: 1rem; /* RTL */
+  padding-right: 1rem; 
 }
 
-/* Style du numéro (avant chaque <li>) */
 .ql-editor ol li::marker {
-  font-weight: bold; /* Met en gras les numéros */
+  font-weight: bold; 
   font-size: 1rem;
-  color: #3490dc; /* Couleur personnalisée */
+  color: #3490dc; 
   padding-left: 1rem; 
 }
 
-/* Alternative : Pour plus de contrôle, utiliser ::before */
 .ql-editor ol li::before {
-  content: counters(item, ".") " "; /* 1. / 1.1. / 1.2. */
+  content: counters(item, ".") " "; 
   counter-increment: item;
   position: absolute;
-  left: 0; /* Position LTR */
+  left: 0; 
   color: #3490dc;
 }
 
@@ -155,7 +150,6 @@
   left: auto;
 }
 
-/* Alignements */
 .ql-editor .ql-align-center {
   text-align: center;
 }
@@ -164,25 +158,22 @@
   text-align: right;
 }
 
-/* Blockquote Styling */
 .ql-editor blockquote {
   border-left: 4px solid #3490dc;
   margin: 1.5em 0;
-  padding: 15px 20px!important; /* Ajout de padding */
+  padding: 15px 20px!important; 
   font-style: italic;
   color: #2e3440;
   background-color: #d8dee9;
   border-radius: 0 4px 4px 0;
 }
 
-/* Blockquote RTL */
 [dir="rtl"] .ql-editor blockquote {
   border-left: none;
   border-right: 4px solid #3490dc;
   border-radius: 4px 0 0 4px;
 }
 
-/* Bloc de Code (pre) */
 .ql-editor pre {
   color: #2e3440; 
   background-color: #d8dee9;
@@ -199,7 +190,6 @@
   text-align: left; 
 }
 
-/* Code Inline Styling */
 .ql-editor code {
   background-color: #f4f4f4;
   color: #c7254e;
@@ -208,16 +198,14 @@
   font-family: 'Source Code Pro', monospace;
   font-size: 0.85rem;
   margin: 0 0.1rem;
-  direction: ltr; /* Toujours LTR */
+  direction: ltr; 
 }
 
-/* Gestion RTL pour pre */
 [dir="rtl"] .ql-editor pre {
   text-align: left; 
   direction: ltr;
 }
 
-/* Barre de défilement personnalisée */
 .ql-editor pre::-webkit-scrollbar {
   width: 8px;
 }
