@@ -38,7 +38,11 @@
     "Tasks": {
         "taskaty": "تاسكاتي",
         "status": "الحالة",
-        "details": "التفاصيل"
+        "details": "التفاصيل",
+        "createdAt": "منذ:",
+        "not_started": "لم تبدأ",
+        "in_progress": "قيد التنفيذ",
+        "completed": "منجزة"
     },
     "Footer": {
         "copyright": "جميع الحقوق محفوظة"

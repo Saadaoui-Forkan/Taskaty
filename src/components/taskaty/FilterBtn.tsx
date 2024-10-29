@@ -45,11 +45,11 @@ const FilterSidebar = () => {
     }
   }, []);
   return (
-    <div className="z-50">
+    <div className="z-[100]">
       <div
-        className={`w-64 p-4 border-r dark:border-gray-700 bg-white dark:bg-gray-900 h-screen fixed top-16 left-0 transform 
-        transition-transform duration-300 shadow-lg ${isOpen ? "translate-x-0" : "-translate-x-full"
-          }`}
+          className={`w-64 p-4 border-r dark:border-gray-700 bg-white dark:bg-gray-900 
+            h-screen fixed top-16 left-0 transition-transform duration-300 shadow-lg 
+            ${isOpen ? "" : "-translate-x-full"}`}
       >
 
         <button

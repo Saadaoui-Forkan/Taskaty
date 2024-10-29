@@ -1,5 +1,5 @@
 import React from 'react'
-import TaskItem from './TaskItem'
+import TaskItem from '../taskaty/TaskItem'
 import moment from 'moment'
 import Link from 'next/link'
 import { Task } from '@prisma/client'
@@ -15,7 +15,8 @@ interface FilteredTasksProps {
 const FilteredTasks = ({ tasks, status, from, to }: FilteredTasksProps) => {
     const t = useTranslations("Filter Results")
     return (
-        <>{tasks.length === 0 ? (
+        <>
+        {tasks.length === 0 ? (
             <div className="text-center space-y-4 bg-white dark:bg-gray-800 p-8 rounded-md shadow-lg">
                 <h1 className="text-2xl font-semibold text-slateGray dark:text-coolGray">
                     {t('noResultsFound')}

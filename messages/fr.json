@@ -38,7 +38,12 @@
     "Tasks": {
         "taskaty": "Taskaty",
         "status": "Statut",
-        "details": "Détails"
+        "details": "Détails",
+        "createdAt": "Publié le:",
+        
+        "not_started": "Pas commencé",
+        "in_progress": "En cours",
+        "completed": "Terminée"
     },
     "Footer": {
         "copyright": "Tous droits réservés"

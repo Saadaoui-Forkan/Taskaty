@@ -85,7 +85,7 @@ const LoginForm = () => {
           className="w-full py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 transition-all duration-300"
         >
           {loading ? (
-            <span className="animate-spin h-5 w-5 border-t-2 border-white rounded-full"></span>
+            <span className="animate-spin rounded-full h-5 w-5 border-t-2 border-r-2 border-white inline-block"></span>
           ) : (
             t("login")
           )}
